@@ -1,0 +1,651 @@
+{
+  "restName": "lollo",
+  "type": "ristorante",
+
+  "city": "Fano",
+  "street": "Via Leonardo Pietolati",
+  "civ": "4",
+  "cap": "61032",
+  "province": "PU",
+  "country": "Italy",
+
+  "youtube": "http://youtube.com",
+  "twitter": "http://twitter.com",
+  "facebook": "http://facebook.com",
+  "instagram": "http://instagram.com",
+
+  "highlights": [
+    "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "https://images.pexels.com/photos/3727186/pexels-photo-3727186.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  ],
+
+  "menu": [
+    {
+      "_id": "5ee5f7b88d93d1284810027d",
+      "name": "Insalata Classica",
+      "price": "4.00",
+      "description": "Piatto leggero a base di verdure, ottimo sia come contorno che da mangiare individualmente",
+      "category": "Insalate",
+      "tags": ["vegan"],
+      "ingredients": [
+        "lattuga",
+        "pomodori",
+        "carote",
+        "radicchio",
+        "olio",
+        "aceto",
+        "sale"
+      ],
+      "image": "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100288",
+      "name": "Patate Al Forno",
+      "price": "4.00",
+      "description": "Le patate di San Giminiano sono cotte al forno in modo da rendere l'esterno croccante e l'interno una soffice coccola per il palato. Contorno semplice e tradizionale, aromatizzato al rosmarino.",
+      "category": "Contorni",
+      "tags": ["vegan", "fast"],
+      "ingredients": ["patate", "rosmarino", "olio", "sale", "pepe"],
+      "image": "https://images.pexels.com/photos/3727186/pexels-photo-3727186.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100282",
+      "name": "Linguine in Salsa di Gamberi",
+      "price": "13.00",
+      "description": "Gamberetti pescati a Otranto, finemente tritati costituiscono la crema alla base di un piatto semplice ed elegegante che soddisfa i palati più raffinati.",
+      "category": "Primi",
+      "tags": ["fish"],
+      "ingredients": [
+        "linguine",
+        "gamberi",
+        "prezzemolo",
+        "cipollotto",
+        "pomodori"
+      ],
+      "image": "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100291",
+      "name": "Macedonia",
+      "price": "3.00",
+      "description": "Mix di frutta raccolta a chilometro 0, ottimo per concludere il pasto in maniera sana e gustosa. ",
+      "category": "Frutta",
+      "tags": ["traditional", "vegan"],
+      "ingredients": [
+        "more",
+        "lamponi",
+        "mirtilli",
+        "fragole",
+        "cocco",
+        "mandorle",
+        "mango",
+        "finocchio selvatico"
+      ],
+      "image": "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810027f",
+      "name": "Insalata della casa",
+      "price": "5.00",
+      "description": "Un mix di ingredienti semplici e saporiti rappresentano la nostra personalissima insalata, una sorpresa per gli occhi e per il gusto",
+      "category": "Insalate",
+      "tags": ["meat"],
+      "ingredients": [
+        "pollo",
+        "carote",
+        "catrioli",
+        "cavoli cappuccio",
+        "cipolle",
+        "lattuga",
+        "lime",
+        "germogli di soya"
+      ],
+      "image": "https://images.pexels.com/photos/2116090/pexels-photo-2116090.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100284",
+      "name": "Riso con Uova e Zucchina",
+      "price": "5.00",
+      "description": "Un piatto sfizioso dall'elevato contenuto proteico e vitaminico. Ottimo dopo l'allenamento per chi vuole avere un pasto completo e salutare che sazi anche i più affamati.",
+      "category": "Primi",
+      "tags": ["spicy", "fast"],
+      "ingredients": [
+        "riso integrale",
+        "zucchine",
+        "porri",
+        "uova",
+        "prezzemolo"
+      ],
+      "image": "https://images.pexels.com/photos/1410235/pexels-photo-1410235.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100285",
+      "name": "Couscous alle Verdure",
+      "price": "3.00",
+      "description": "Granelli di semola e di frumento cotti a vapore, accompagnati da una grande varietà di verdure. Ottimo per tutti i palati, sopratutto mangiato nei mesi più caldi.",
+      "category": "Primi",
+      "tags": ["vegan", "fast"],
+      "ingredients": [
+        "couscous",
+        "pomodori",
+        "zucchine",
+        "peperoni",
+        "carote",
+        "zenzero",
+        "broccoli",
+        "cavolini di bruxelles",
+        "prezzemolo"
+      ],
+      "image": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810028c",
+      "name": "Hamburger",
+      "price": "6.00",
+      "description": "Un immancabile classico della cucina americana, proposto con una variegata serie di aggiunte in modo da soddisfare anche i più voraci",
+      "category": "Secondi",
+      "tags": ["meat", "fast"],
+      "ingredients": [
+        "carne di manzo",
+        "pane",
+        "insalata",
+        "cipolle",
+        "pomodori",
+        "cheddar",
+        "maionese",
+        "bacon"
+      ],
+      "image": "https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100289",
+      "name": "Patatine Fritte",
+      "price": "4.50",
+      "description": "Contorno onnipresente, rende felici adulti e bambini.",
+      "category": "Contorni",
+      "tags": ["vegan", "fast"],
+      "ingredients": ["patatine gusto paprika", "salsa BBQ", "sale"],
+      "image": "https://images.pexels.com/photos/1893555/pexels-photo-1893555.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810028d",
+      "name": "Hamburger e Patatine",
+      "price": "7.00",
+      "description": "Un immancabile classico della cucina americana, proposto con una variegata serie di aggiunte in modo da soddisfare anche i più voraci.",
+      "category": "Secondi",
+      "tags": ["meat", "fast"],
+      "ingredients": [
+        "carne di manzo",
+        "pane",
+        "lattuga",
+        "cipolle rosse",
+        "pomodori",
+        "formaggio",
+        "maionese",
+        "ketchup",
+        "bacon",
+        "patatine fritte"
+      ],
+      "image": "https://images.pexels.com/photos/3616956/pexels-photo-3616956.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100292",
+      "name": "Muesli di Cereali",
+      "price": "3.00",
+      "description": "Perché limitarsi alla colazione? A merenda e per sfizio, i nostri cereali con frutta fresca ti ridaranno ttta la carica di cui ai bisogno",
+      "category": "Frutta",
+      "tags": ["vegan"],
+      "ingredients": [
+        "cereali",
+        "latte",
+        "banane",
+        "semi di chia",
+        "semi di papavero",
+        "avena"
+      ],
+      "image": "https://images.pexels.com/photos/1333746/pexels-photo-1333746.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100287",
+      "name": "Insalata alla caprese",
+      "price": "5.00",
+      "description": "L'insalata del nostro orto incontra la freschezza della bufalina biologica, addolcita dai nostri datterini campani",
+      "category": "Contorni",
+      "tags": ["traditional"],
+      "ingredients": [
+        "basilico",
+        "mozzarelle",
+        "pomodori",
+        "sale",
+        "pepe",
+        "olio",
+        "origano"
+      ],
+      "image": "https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100283",
+      "name": "Tagliatelle con Fagioli",
+      "price": "12.00",
+      "description": "Un piatto degno di Bud Spencer e Terence Hill, ma con la nostra immancabile pasta all'uovo fatta in casa",
+      "category": "Primi",
+      "tags": ["traditional"],
+      "ingredients": ["tagliatelle", "fagioli", "pomodori", "prezzemolo"],
+      "image": "https://images.pexels.com/photos/1527603/pexels-photo-1527603.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810028f",
+      "name": "Burrito",
+      "price": "5.00",
+      "description": "Un piatto messicano dai sapori piccanti. Provare per credere",
+      "category": "Secondi",
+      "tags": ["meat", "fast", "traditional"],
+      "ingredients": [
+        "tortilla",
+        "pollo",
+        "peperoni",
+        "pomodori",
+        "cipolle",
+        "riso",
+        "jalapeño",
+        "lime"
+      ],
+      "image": "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100293",
+      "name": "Fragole e Cocco",
+      "price": "5.00",
+      "description": "Piatto rinfrescante, ideale per opporsi all'opprimente caldo estivo. Ottimo anche da mangiare in gruppo.",
+      "category": "Frutta",
+      "tags": ["traditional", "vegan"],
+      "ingredients": ["fragole", "cocco", "latte di cocco", "semi di chia"],
+      "image": "https://images.pexels.com/photos/1030973/pexels-photo-1030973.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100296",
+      "name": "Pancake con Sciroppo D'Acero",
+      "price": "3.50",
+      "description": "Un immancabile classico della cucina canadese. Ottimo per colazione o dopo i past ",
+      "category": "Dolci",
+      "tags": ["sweet"],
+      "ingredients": [
+        "pancake",
+        "fragole",
+        "sciroppo d'acero",
+        "zucchero a velo",
+        "foglie di menta",
+        "yogurt"
+      ],
+      "image": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810027e",
+      "name": "Insalatona Mista",
+      "price": "5.00",
+      "description": "Un'insalata normalissima, ma più grande. Molto più grande. Seriamente però, gargantuanamente abnorme.",
+      "category": "Insalate",
+      "tags": ["traditional"],
+      "ingredients": [
+        "pollo",
+        "uova",
+        "olive nere",
+        "pomodori",
+        "arance rosse",
+        "avocado",
+        "ciliegie"
+      ],
+      "image": "https://images.pexels.com/photos/793759/pexels-photo-793759.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810028a",
+      "name": "Pollo Tandoori con Riso Basmati",
+      "price": "10.50",
+      "description": "Un piatto tipicamente indiano. Una vera e propria avventura sensoriale.",
+      "category": "Secondi",
+      "tags": ["spicy", "meat"],
+      "ingredients": [
+        "riso basmati",
+        "pollo",
+        "curry",
+        "yogurt greco",
+        "spezie",
+        "aglio",
+        "zenzero",
+        "succo di limone"
+      ],
+      "image": "https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100290",
+      "name": "Tramezzini",
+      "price": "5.00",
+      "description": "Strati di soffice pane costiutiscono la struttura portante di un palazzo di sapori caratteristici.",
+      "category": "Secondi",
+      "tags": ["meat", "fast"],
+      "ingredients": [
+        "patatine fritte",
+        "bacon",
+        "pane",
+        "uova",
+        "lattuga",
+        "carne di manzo"
+      ],
+      "image": "https://images.pexels.com/photos/1600711/pexels-photo-1600711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100294",
+      "name": "Torta ai Frutti di Bosco",
+      "price": "5.00",
+      "description": "Una torta cremosa che si scioglie in bocca in un esplosione di sapori semplici ma mai scontati.",
+      "category": "Dolci",
+      "tags": ["traditional"],
+      "ingredients": [
+        "uova",
+        "latte",
+        "zucchero",
+        "panna",
+        "frutti di bosco",
+        "cioccolato"
+      ],
+      "image": "https://images.pexels.com/photos/1414234/pexels-photo-1414234.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810028e",
+      "name": "Hotdog",
+      "price": "6.50",
+      "description": "Un panino farcito dalla forma allungata che unisce il sapore dei würstel ad una deliziosa maionese",
+      "category": "Secondi",
+      "tags": ["meat", "fast"],
+      "ingredients": [
+        "senape",
+        "maionese",
+        "pane",
+        "patatine fritte",
+        "lattuga",
+        "wurstel di maiale",
+        "pomodoro"
+      ],
+      "image": "https://images.pexels.com/photos/3052248/pexels-photo-3052248.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100286",
+      "name": "Bruschette al Pomodoro",
+      "price": "3.00",
+      "description": "Gustosi pomodorini di Norcia incontrano una soffice base di pane croccante",
+      "category": "Contorni",
+      "tags": ["vegan", "traditional"],
+      "ingredients": [
+        "pomodori",
+        "pane",
+        "origano",
+        "sale",
+        "olio",
+        "basilico"
+      ],
+      "image": "https://images.pexels.com/photos/3535373/pexels-photo-3535373.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d1284810028b",
+      "name": "Tagliata di Vitello con Verdure",
+      "price": "12.00",
+      "description": "Succosa carne di vitello, con cottura media accompagnata con verdure della casa.",
+      "category": "Secondi",
+      "tags": ["meat", "traditional"],
+      "ingredients": [
+        "carne di manzo",
+        "pomodori",
+        "basilico",
+        "cavolfiori",
+        "asparagi",
+        "carote",
+        "broccoli"
+      ],
+      "image": "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "_id": "5ee5f7b88d93d12848100295",
+      "name": "Torta al Cioccolato",
+      "price": "5.00",
+      "description": "La torta più amata dai piccini. Un soffice abbraccio al cioccolato fondente da provare assolutamente",
+      "category": "Dolci",
+      "tags": [],
+      "ingredients": [
+        "uova",
+        "crema",
+        "cioccolato",
+        "caffè",
+        "mascarpone",
+        "cacao"
+      ],
+      "image": "https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Frutti di Bosco Sfusi",
+      "price": "5.00",
+      "description": "Nel sottobosco delle pianure molisane, i mirtilli si sposano con un delizioso mix di frutti di bosco.",
+      "category": "Frutta",
+      "tags": ["vegan"],
+      "ingredients": ["more", "mirtilli", "bacche", "fragole", "lamponi"],
+      "image": "https://images.pexels.com/photos/4558306/pexels-photo-4558306.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Torta Vaniglia e Cioccolato",
+      "price": "4.00",
+      "description": "Una nostra personalissima riproposizione della torta mille foglie realizzata con differenti strati di crema al cioccolato e vaniglia",
+      "category": "Dolci",
+      "tags": [],
+      "ingredients": [
+        "uova",
+        "vaniglia",
+        "cacao",
+        "cioccolato",
+        "foglie di menta"
+      ],
+      "image": "https://images.pexels.com/photos/4553125/pexels-photo-4553125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940#"
+    },
+    {
+      "name": "Torta Cioccolato e Lamponi",
+      "price": "4.00",
+      "description": "Un dolce delicato che sfuma il cioccolato con delle sfiziose note di frutta",
+      "category": "Dolci",
+      "tags": [],
+      "ingredients": ["uova", "lamponi", "cacao", "cioccolato"],
+      "image": "https://images.pexels.com/photos/4110007/pexels-photo-4110007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Pizza Bufalina",
+      "price": "5.00",
+      "description": "La nostra inconfondibile pizza margherita proposta con mozzarella di bufala provienente dai pascoli marchigiani",
+      "category": "Secondi",
+      "tags": ["traditional", "fast"],
+      "ingredients": [
+        "mozzarella di bufalo",
+        "pomodori",
+        "acqua",
+        "farina",
+        "lievito"
+      ],
+      "image": "https://images.pexels.com/photos/2471171/pexels-photo-2471171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Tartine alla Frutta",
+      "price": "3.00",
+      "description": "Soffici fette dei più disparati frutti esotici si posano su un letto di pane croccante",
+      "category": "Dolci",
+      "tags": ["vegan"],
+      "ingredients": [
+        "kiwi",
+        "lamponi",
+        "fragole",
+        "pesche",
+        "burro",
+        "cocco",
+        "pane integrale",
+        "susine",
+        "melone"
+      ],
+      "image": "https://images.pexels.com/photos/974229/pexels-photo-974229.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Pizza al Salame Piccante",
+      "price": "10.00",
+      "description": "Un classico della cucina napoletana proposta in maniera piccante. Una vera sfida per gli amanti del calore.",
+      "category": "Secondi",
+      "tags": [],
+      "ingredients": [
+        "acqua",
+        "farina",
+        "lievito",
+        "salame piccante",
+        "pomodori"
+      ],
+      "image": "https://images.pexels.com/photos/3915857/pexels-photo-3915857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Penne al Ragù",
+      "price": "8.00",
+      "description": "Come si migliora un grande classico? Con la pasta fatta in casa? Con una passata di pomodori a chilometro zero? Con un soffritto a cottura lentissima? Sì, sì e ancora sì",
+      "category": "Primi",
+      "tags": [],
+      "ingredients": [
+        "penne",
+        "macinato",
+        "carote",
+        "cipolle",
+        "pomodori",
+        "basilico",
+        "peperoncino"
+      ],
+      "image": "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Linguine al Tartufo",
+      "price": "10.00",
+      "description": "La passione per la pasta all'uovo fatta in casa incontra il tartufo in un mix saporito e intrigante",
+      "category": "Primi",
+      "tags": [],
+      "ingredients": [
+        "linguine",
+        "tartufi",
+        "olio",
+        "sale",
+        "formaggio",
+        "erba cipollina"
+      ],
+      "image": "https://images.pexels.com/photos/2773940/pexels-photo-2773940.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Agrumi sfusi della Casa",
+      "price": "4.00",
+      "description": "Mix di cinque agrumi del frutteto della casa, tipici del mezzogiorno italiano e coltivati biologicamente",
+      "category": "Frutta",
+      "tags": ["vegan"],
+      "ingredients": ["limoni", "melograni", "arance", "arance rosse"],
+      "image": "https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Involtini di Carne",
+      "price": "4.00",
+      "description": "Piatto tradizionale campano, che abbina la leggerezza della pancetta biologica, fegato e rosmarino",
+      "category": "Secondi",
+      "tags": ["meat", "traditional"],
+      "ingredients": [
+        "rosmarino",
+        "pancetta",
+        "fegato di maiale",
+        "sale",
+        "olio"
+      ],
+      "image": "https://images.pexels.com/photos/416471/pexels-photo-416471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Manzo ai Ferri con Patate",
+      "price": "20.00",
+      "description": "Piatto sano e completo, che abbina una fetta di manzo a cottura lenta, patate biologiche, aglio e spezie locali",
+      "category": "Secondi",
+      "tags": ["meat"],
+      "ingredients": ["patate al forno", "aglio", "rosmarino", "sale", "olio"],
+      "image": "https://images.pexels.com/photos/3535383/pexels-photo-3535383.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Ciambelle Glassate",
+      "price": "6.00",
+      "description": "Per rendere le nostre ciambelle più salutari, preferiamo la tradizionale cottura al forno e una glassa con frutti di bosco locali",
+      "category": "Dolci",
+      "tags": ["traditional"],
+      "ingredients": [
+        "farina",
+        "uova",
+        "crema",
+        "latte",
+        "zuccherini colorati",
+        "lievito",
+        "frutti di bosco"
+      ],
+      "image": "https://images.pexels.com/photos/4686958/pexels-photo-4686958.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Cupcake al Cioccolto",
+      "price": "5.00",
+      "description": "Dessert ottimo per piccoli spuntini. Amato dai bambini",
+      "category": "Dolci",
+      "tags": [],
+      "ingredients": [
+        "cioccolato fondente",
+        "farina",
+        "uova",
+        "zucchero",
+        "burro",
+        "latte"
+      ],
+      "image": "https://images.pexels.com/photos/913136/pexels-photo-913136.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    },
+    {
+      "name": "Limonata",
+      "price": "5.00",
+      "description": "Bibita fresca e sana per le più calde giornate d'estate",
+      "category": "Bevande",
+      "tags": [],
+      "ingredients": ["menta", "limone", "acqua", "zucchero"],
+      "image": "https://images.pexels.com/photos/3651044/pexels-photo-3651044.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    },
+    {
+      "name": "Coca Cola",
+      "price": "5.00",
+      "description": "Insostituibile! La bibita analcolica gassata più bevuta al mondo",
+      "category": "Bevande",
+      "tags": [],
+      "ingredients": [],
+      "image": "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    },
+    {
+      "name": "Acqua",
+      "price": "1.00",
+      "description": "Acqua oligominerale, disponibile sia naturale che frizzante.",
+      "category": "Bevande",
+      "tags": [],
+      "ingredients": [],
+      "image": "https://images.pexels.com/photos/113734/pexels-photo-113734.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    },
+    {
+      "name": "Cappuccino",
+      "price": "2.00",
+      "description": "Una delle più famose bevande di origine italiana, composta da cafè e latte montato a vapore. Consumato soprattutto nel corso della mattina",
+      "category": "Bevande",
+      "tags": [],
+      "ingredients": [],
+      "image": "https://images.pexels.com/photos/1260591/pexels-photo-1260591.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    },
+    {
+      "name": "Caffè",
+      "price": "2.00",
+      "description": "Inmancabile dopo basti. Il nostro caffè aromatizzato ti ridarà la carica!",
+      "category": "Bevande",
+      "tags": [],
+      "ingredients": [],
+      "image": "https://images.pexels.com/photos/3020919/pexels-photo-3020919.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    }
+  ]
+}

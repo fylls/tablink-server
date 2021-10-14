@@ -1,0 +1,970 @@
+{
+  "info": {
+    "type": "sala giochi",
+
+    "logo": "https://scontent-fco1-1.xx.fbcdn.net/v/t1.0-9/fr/cp0/e15/q65/94253063_1449955158727445_8042270435775086592_n.jpg?_nc_cat=103&_nc_sid=85a577&efg=eyJpIjoidCJ9&_nc_ohc=D-qWfN-SbLMAX8kvE-S&_nc_ht=scontent-fco1-1.xx&_nc_tp=14&oh=bd9b9a9a74ef2ea5217dd0ed0338d29c&oe=5F2784FB",
+
+    "description": "A Lecce ,nel cuore della movida, 500mq di sala giochi NO SLOT con annessi food, cocktail bar e cortile. Innovazione, tecnologia e divertimento per tutti ",
+
+    "address": {
+      "city": "Lecce",
+      "cap": "73100",
+      "street": "Via Manifattura Tabacchi",
+      "civ": "34",
+      "province": "LE",
+      "country": "Italy"
+    },
+
+    "social": {
+      "facebook": "https://www.facebook.com/colellagamescocktailsfood/",
+      "instagram": "https://www.instagram.com/colellagamescocktails"
+    },
+
+    "highlights": [
+      "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://images.pexels.com/photos/3727186/pexels-photo-3727186.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    ],
+
+    "menu": [
+      {
+        "name": "Mix Apetizer",
+        "price": "9.00",
+        "description": "fritto misto di anelli homemade di cipolla, chicken nugget, french fries e verdure in pastella. Il tutto accompagnato da una stuzzicante varietà di salse. Per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "ingredients": [
+          "anelli di cipolla fritti",
+          "chicken nugget",
+          "patatine fritte",
+          "verdure in pastella"
+        ],
+        "category": "Antipasti",
+        "tags": ["meat"],
+        "image": ""
+      },
+      {
+        "name": "French Fries",
+        "price": "3.50",
+        "description": "per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "category": "Antipasti",
+        "tags": ["vegan", "fast"],
+        "ingredients": ["patate", "rosmarino", "olio", "sale", "pepe"],
+        "image": ""
+      },
+      {
+        "name": "Twister and Paprika Potatoes",
+        "price": "4.50",
+        "description": "per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "category": "Antipasti",
+        "tags": ["vegan", "fast"],
+        "ingredients": ["patate", "sale", "pepe", "olio", "paprika"],
+        "image": ""
+      },
+      {
+        "name": "Praga e Burrata",
+        "price": "10.00",
+        "description": "prosciutto praga accompagnati con burrata 200g e radicchio grigliato",
+        "category": "Antipasti",
+        "tags": ["meat"],
+        "ingredients": [
+          "prosciutto di praga",
+          "latte vaccino",
+          "sale",
+          "caglio",
+          "panna pastorizzata",
+          "radicchio",
+          "olio",
+          "paprika"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Crudo e Bufala",
+        "price": "10.00",
+        "description": "",
+        "category": "Antipasti",
+        "tags": ["meat"],
+        "ingredients": [
+          "prosciutto crudo",
+          "mozzarella di bufala",
+          "pomodorini",
+          "rucola"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Bacon French Fries",
+        "price": "7.50",
+        "description": "per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "category": "Antipasti",
+        "tags": ["meat"],
+        "ingredients": [
+          "patate fritte",
+          "bacon croccante",
+          "crema cheddar dello chef"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Ranchese Mozzarelle",
+        "price": "6.50",
+        "description": "per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "category": "Antipasti",
+        "tags": ["meat"],
+        "ingredients": ["mozzarelle homdemade fritte", "salsa a scelta"],
+        "image": ""
+      },
+      {
+        "name": "Onion Rings",
+        "price": "4.50",
+        "description": "per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "category": "Antipasti",
+        "tags": ["vegan"],
+        "ingredients": ["anelli di cipolla fritti", "salsa"],
+        "image": ""
+      },
+      {
+        "name": "Chicken Nuggets",
+        "price": "7.50",
+        "description": "per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "category": "Antipasti",
+        "tags": ["meat"],
+        "ingredients": ["hamburger di pollo", "salsa bbq"],
+        "image": ""
+      },
+      {
+        "name": "Chicken Wings",
+        "price": "7.50",
+        "description": "per i nostri fritti solo olio di girasole alto oleico per garantire fragranza a croccantezza",
+        "category": "Antipasti",
+        "tags": ["meat"],
+        "ingredients": ["hamburger di pollo", "salsa bbq"],
+        "image": ""
+      },
+
+      {
+        "name": "Hamburger",
+        "price": "8.50",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "burger di manzo (200gr)",
+          "insalata",
+          "pomodori"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Chicken Burger",
+        "price": "8.50",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "burger di pollo (200gr)",
+          "insalata",
+          "pomodori",
+          "emmenthal",
+          "salsa burger"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Bacon Cheeseburger",
+        "price": "9.00",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat", "double"],
+        "ingredients": [
+          "bun artigianale",
+          "burger di manzo (200gr)",
+          "insalata",
+          "pomodori",
+          "cipolla cotta",
+          "formaggio cheddar",
+          "bacon croccante",
+          "cetrioli sottaceto"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Bismark Burger",
+        "price": "9.50",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "burger di manzo (200gr)",
+          "insalata",
+          "pomodori",
+          "uovo all'occhio di bue",
+          "formaggio cheddar",
+          "bacon croccante",
+          "cetrioli sottaceto"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Hot Burger",
+        "price": "9.00",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "burger di manzo (200gr)",
+          "insalata",
+          "pomodori",
+          "ventricina",
+          "anelli di cipolla fritti",
+          "salsa piccante"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Bufola Burger",
+        "price": "9.50",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "burger di manzo (200gr)",
+          "mozzarella di bufala",
+          "bacon croccante",
+          "rucola",
+          "pomodori",
+          "insalata",
+          "glassa di aceto balsamico"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Bufola Burger",
+        "price": "9.50",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "burger di manzo (200gr)",
+          "mozzarella di bufala",
+          "bacon croccante",
+          "rucola",
+          "pomodori",
+          "insalata",
+          "glassa di aceto balsamico"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Bacon Hot Dog",
+        "price": "8.00",
+        "description": "Bun artigianale in farina di frumento tipo '0' con semi di sesamo",
+        "category": "Burgers",
+        "tags": ["meat"],
+        "ingredients": ["hot dog", "bacon alla piastra", "salsa bbq"],
+        "image": ""
+      },
+
+      {
+        "name": "Box Chicken",
+        "price": "8.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "cotolette di pollo (200gr)",
+          "insalata",
+          "pomodori",
+          "maionese"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Angus Burger",
+        "price": "11.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "hamburger di black angus (200gr)",
+          "formaggio brie",
+          "insalata",
+          "pomodori",
+          "salsa bbq"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Irlanda Angus Burger",
+        "price": "12.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "hamburger di angus (200gr)",
+          "zucchine grigliate",
+          "funghi",
+          "gorgonzola",
+          "prosciutto crudo"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Green Cloudy",
+        "price": "12.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "hamburger di manzo (200gr)",
+          "radichio grigliato",
+          "burrata",
+          "pesto di pistacchio",
+          "bacon croccante"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Pink & Purple Burge",
+        "price": "11.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "hamburger di manzo (200gr)",
+          "radichio grigliato",
+          "prosciutto di praga",
+          "mozzarella in carrozza",
+          "salsa cocktail"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Chicken Fried Burger",
+        "price": "9.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "hamburger fritto di pollo (200gr)",
+          "insalata",
+          "emmenthal",
+          "pomodori",
+          "salsa rosa"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Boar Burger",
+        "price": "12.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "hamburger di cinghiale (200gr)",
+          "scamorza affumicata",
+          "rucola",
+          "pomodori",
+          "salsa boscaiola"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Greedy Burger",
+        "price": "13.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "hamburger di manzo (200gr)",
+          "burrata (200gr)",
+          "insalata",
+          "pomodori",
+          "prosciutto crudo"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Cyber Burger",
+        "price": "13.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "doppio hamburger di manzo (200gr)",
+          "burrata (200gr)",
+          "bacon croccante",
+          "pomodori",
+          "insalata",
+          "cheddar",
+          "anelli",
+          "anelli di cipolla fritti"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Orcs Burger",
+        "price": "13.00",
+        "description": "tutte carni senza glutine. il nostro è un pane artigianale fresco, prodotto nelle 24h prima dell'utilizzo. Realizzato con ingredienti selezionati, è morbido e fragante con semi di sesamo",
+        "category": "Specials",
+        "tags": ["meat"],
+        "ingredients": [
+          "bun artigianale",
+          "carne di manzo (200gr)",
+          "mozzarella piastrata",
+          "pomodori secchi",
+          "straccetti di mozzarella di bufala",
+          "pesto di pistacchi"
+        ],
+        "image": ""
+      },
+
+      {
+        "name": "Cut Chicken",
+        "price": "12.00",
+        "description": "le nostre carni sono fornite da macellai di fiducia che si assicurano carne fresca e selezionata tutti i giorni. Viene poi cucinata al momento per garantire un'ottima qualità",
+        "category": "Piatti di Carne",
+        "tags": ["meat"],
+        "ingredients": [
+          "tagliata di pollo grigliata",
+          "funghi champignon arrosto",
+          "pomodori gligliati",
+          "rucola"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Fried Cut Chicken",
+        "price": "12.00",
+        "description": "le nostre carni sono fornite da macellai di fiducia che si assicurano carne fresca e selezionata tutti i giorni. Viene poi cucinata al momento per garantire un'ottima qualità",
+        "category": "Piatti di Carne",
+        "tags": ["meat"],
+        "ingredients": ["tagliata di pollo fritta", "pomodori", "rucola"],
+        "image": ""
+      },
+      {
+        "name": "Chicken Cutlet",
+        "price": "10.00",
+        "description": "le nostre carni sono fornite da macellai di fiducia che si assicurano carne fresca e selezionata tutti i giorni. Viene poi cucinata al momento per garantire un'ottima qualità",
+        "category": "Piatti di Carne",
+        "tags": ["meat"],
+        "ingredients": ["cotoletta di pollo fritta", "patate french fries"],
+        "image": ""
+      },
+      {
+        "name": "Chicken Breast",
+        "price": "11.00",
+        "description": "le nostre carni sono fornite da macellai di fiducia che si assicurano carne fresca e selezionata tutti i giorni. Viene poi cucinata al momento per garantire un'ottima qualità",
+        "category": "Piatti di Carne",
+        "tags": ["meat"],
+        "ingredients": [
+          "petto di pollo alla piastra",
+          "due uova all'occhio di bue",
+          "insalata",
+          "bacon croccante",
+          "french fries"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Chicken Thight",
+        "price": "11.00",
+        "description": "le nostre carni sono fornite da macellai di fiducia che si assicurano carne fresca e selezionata tutti i giorni. Viene poi cucinata al momento per garantire un'ottima qualità",
+        "category": "Piatti di Carne",
+        "tags": ["meat"],
+        "ingredients": [
+          "coscie di pollo alla piatra",
+          "pomodori",
+          "insalata",
+          "french fries"
+        ],
+        "image": "",
+        "advice": ["gorgonzaola e funghi", "emmenthal e crudo"]
+      },
+
+      {
+        "name": "Queen",
+        "price": "9.00",
+        "description": "Puccia salentina di farina di grano duro rimacinata rimacinata. Accompagnata da patatine fritte",
+        "category": "Pucce",
+        "tags": ["meat"],
+        "ingredients": [
+          "prosciutto crudo",
+          "pomodori",
+          "mozzarella di bufala",
+          "rucola",
+          "rucola sour cream"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Veggie Burger",
+        "price": "9.50",
+        "description": "Puccia salentina di farina di grano duro rimacinata rimacinata. Accompagnata da patatine fritte",
+        "category": "Pucce",
+        "tags": ["meat"],
+        "ingredients": [
+          "hamburger vegetariano",
+          "insalata",
+          "pomodori",
+          "funghi grigliati",
+          "sour cream"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Hurricane",
+        "price": "10.00",
+        "description": "Puccia salentina di farina di grano duro rimacinata rimacinata. Accompagnata da patatine fritte",
+        "category": "Pucce",
+        "tags": ["meat"],
+        "ingredients": [
+          "hamburger di manzo (200gr)",
+          "cipolla cruda",
+          "insalata",
+          "salsa bbq",
+          "pomodori",
+          "bacon croccante"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Hard Rock",
+        "price": "9.00",
+        "description": "Puccia salentina di farina di grano duro rimacinata rimacinata. Accompagnata da patatine fritte",
+        "category": "Pucce",
+        "tags": ["meat"],
+        "ingredients": [
+          "ventricina grigliata",
+          "scamorza affumicata alla griglia",
+          "insalata",
+          "salsa piccante",
+          "pomodori"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Chicken",
+        "price": "9.00",
+        "description": "Puccia salentina di farina di grano duro rimacinata rimacinata. Accompagnata da patatine fritte",
+        "category": "Pucce",
+        "tags": ["meat"],
+        "ingredients": [
+          "petto di pollo fresco grigliato",
+          "salsa cocktail",
+          "insalata",
+          "pomodori"
+        ],
+        "image": ""
+      },
+
+      {
+        "name": "Notre Dome",
+        "price": "11.00",
+        "description": "pane di farina 00. Tramezzino con contorno di french fries",
+        "category": "Club Sandwich",
+        "tags": ["meat"],
+        "ingredients": [
+          "bacon croccante",
+          "prosciutto di praga",
+          "insalata",
+          "pomodori",
+          "emmenthal",
+          "maionese"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Helmut",
+        "price": "11.50",
+        "description": "pane di farina 00. Tramezzino con contorno di french fries",
+        "category": "Club Sandwich",
+        "tags": ["meat"],
+        "ingredients": [
+          "bacon croccante",
+          "pollo grigliato",
+          "rucola",
+          "funghi alla piastra",
+          "pomodori",
+          "salsa boscaiola"
+        ],
+        "image": ""
+      },
+
+      {
+        "name": "Bismark Salad",
+        "price": "9.00",
+        "description": "",
+        "category": "Insalatone",
+        "tags": ["meat"],
+        "ingredients": [
+          "insalata",
+          "hamburger di manzo (200gr)",
+          "rucola",
+          "cetrioli sottaceto",
+          "pomodorini",
+          "mais",
+          "uova all'occhio di bue",
+          "cipolla cotta",
+          "bacon croccante",
+          "sour cream"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Ham Salad",
+        "price": "8.00",
+        "description": "",
+        "category": "Insalatone",
+        "tags": ["meat"],
+        "ingredients": [
+          "insalata",
+          "prosciutto crudo",
+          "mozzarella di bufala",
+          "rucola",
+          "salsa boscaiola",
+          "pomodorini"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Smoked Salad",
+        "price": "9.00",
+        "description": "",
+        "category": "Insalatone",
+        "tags": ["meat"],
+        "ingredients": [
+          "insalata",
+          "prosciutto praga",
+          "mozzarella",
+          "funghi champignon",
+          "rucola",
+          "salsa cocktail",
+          "pomodorini"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Light Salad",
+        "price": "7.50",
+        "description": "",
+        "category": "Insalatone",
+        "tags": ["meat"],
+        "ingredients": [
+          "insalata",
+          "carote",
+          "scamorza",
+          "funghi champignon",
+          "succo di limone",
+          "pomodorini"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Chicken Salad",
+        "price": "9.00",
+        "description": "",
+        "category": "Insalatone",
+        "tags": ["meat"],
+        "ingredients": [
+          "insalata",
+          "mais",
+          "carote",
+          "funghi champignon",
+          "pollo alla griglia",
+          "emmenthal",
+          "sour cream",
+          "bacon croccante"
+        ],
+        "image": ""
+      },
+
+      {
+        "name": "Acqua 50cl",
+        "price": "1.00",
+        "description": "Acqua oligominerale, disponibile sia naturale che frizzante",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Acqua 90cl",
+        "price": "2.00",
+        "description": "Acqua oligominerale, disponibile sia naturale che frizzante",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Gassosa",
+        "price": "2.00",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Coca Cola",
+        "price": "2.50",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Coca Cola Zero",
+        "price": "2.50",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Schweppes Tonica",
+        "price": "2.00",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Soda Premium",
+        "price": "3.50",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "The alla Pesca",
+        "price": "2.00",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Cocktail San Pellegrino",
+        "price": "2.00",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Red Bull",
+        "price": "3.50",
+        "description": "",
+        "category": "Bevande",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+
+      {
+        "name": "Krombacher 20cl",
+        "price": "3.00",
+        "description": "Alla Spina",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Krombacher 40cl",
+        "price": "5.00",
+        "description": "Alla Spina",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Tennent's 25cl",
+        "price": "3.50",
+        "description": "Alla Spina",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Tennent's 50cl",
+        "price": "6.00",
+        "description": "Alla Spina",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Lupulus 75cl",
+        "price": "15.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Paulaner Weisse 33cl",
+        "price": "3.50",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Igea Gluten-Free 33cl",
+        "price": "4.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Peter Pale and Mary Gluten-Free 33cl",
+        "price": "5.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Skipa 50cl",
+        "price": "5.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Nuda e Cruda 33cl",
+        "price": "4.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Laura Bionda e Rossa 33cl",
+        "price": "4.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Laura Bionda 75cl",
+        "price": "10.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Rocks'n'Dive 33cl",
+        "price": "4.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "La Chouffe 33cl",
+        "price": "5.00",
+        "description": "",
+        "category": "Birre",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+
+      {
+        "name": "Rosato Negroamaro 75cl",
+        "price": "14.00",
+        "description": "",
+        "category": "Vini",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Rosato Negroamaro 37.5cl",
+        "price": "7.00",
+        "description": "",
+        "category": "Vini",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Negroamaro 37.5cl",
+        "price": "7.00",
+        "description": "",
+        "category": "Vini",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Passaturi Fiano Bianco 75cl",
+        "price": "20.00",
+        "description": "",
+        "category": "Vini",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Riserva Negroamaro Malvasia 75cl",
+        "price": "20.00",
+        "description": "",
+        "category": "Vini",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      },
+      {
+        "name": "Primitivo 75cl",
+        "price": "12.00",
+        "description": "",
+        "category": "Vini",
+        "tags": [],
+        "ingredients": [],
+        "image": ""
+      }
+    ]
+  }
+}
