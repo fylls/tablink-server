@@ -1,19 +1,21 @@
 const app = require("./app")
-const { connectDB, DB_NAME } = require("./config/db.js")
+const { connectDB, DB_NAME } = require("./utils/db.js")
 const { success, error } = require("consola")
 
-const PORT = process.env.PORT || 69
+const PORT = process.env.PORT || 3000
 
-// Initialize Database and Server
+// initialize database and server
 const startServer = async () => {
   try {
     await connectDB()
+
     success({
-      message: `Successfully connected with DATABASE: ${DB_NAME}`,
+      message: `successfully connected to DATABASE: ${DB_NAME}`,
       badge: true,
     })
 
     app.listen(PORT)
+
     success({
       message: `Server started on PORT: ${PORT}`,
       badge: true,
@@ -24,7 +26,7 @@ const startServer = async () => {
       badge: true,
     })
 
-    // if Failing, Retry
+    // retry if it fails
     startApp()
   }
 }

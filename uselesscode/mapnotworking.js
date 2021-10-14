@@ -1,0 +1,1 @@
+[logInRoute, meRoute, signUpRoute].forEach(e => app.use("/api/user", e))

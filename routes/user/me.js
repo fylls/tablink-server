@@ -6,7 +6,7 @@ const router = express.Router()
 const User = require("../../models/User")
 
 // Middleware for Auth
-const auth = require("../../middleware/auth")
+const auth = require("../../utils/auth")
 
 // Exporting
 module.exports = router
@@ -23,7 +23,7 @@ module.exports = router
  *
  */
 
-router.get("/", auth, async (req, res) => {
+router.get("/me", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password")
     if (user) res.json(user)

@@ -3,7 +3,7 @@ const express = require("express")
 const router = express.Router()
 
 // Middleware
-const auth = require("../../middleware/auth")
+const auth = require("../../utils/auth")
 
 // Database
 const Restaurant = require("../../models/Restaurant")

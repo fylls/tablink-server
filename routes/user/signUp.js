@@ -13,9 +13,6 @@ const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 // Database
 const User = require("../../models/User")
 
-// Stripe for payments
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
-
 // Exporting
 module.exports = router
 
@@ -40,7 +37,7 @@ const signUpOptions = [
   }),
 ]
 
-router.post("/", signUpOptions, async (req, res) => {
+router.post("/signUp", signUpOptions, async (req, res) => {
   // Check for Errors in Body (something is missing)
   const errors = validationResult(req.body)
   if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() })
@@ -58,16 +55,12 @@ router.post("/", signUpOptions, async (req, res) => {
     // Encrypt Password
     const hashed = await bcrypt.hash(password, 12)
 
-    // Create Stripe Costumer
-    const customer = await stripe.customers.create({ email })
-
     // Create new User
     const newUser = new User({
       name,
       email,
       phone,
       password: hashed,
-      customerId: customer.id,
     })
 
     // Save User to DB

@@ -3,7 +3,10 @@ const express = require("express")
 const router = express.Router()
 
 // Middleware
-const auth = require("../../middleware/auth")
+const auth = require("../../utils/auth")
+
+// Input Validator
+const { check, validationResult } = require("express-validator")
 
 // Database
 const Order = require("../../models/Order")
@@ -15,13 +18,19 @@ module.exports = router
 
 /**
  *
- * @route   GET api/orders/:orderID
- * @desc    Create an Order
+ * @route   PUT api/orders/:orderID
+ * @desc    Update an Order
  * @access  Private
+ *
+ * @body    served : Boolean
  *
  */
 
-router.get("/:orderID", auth, async (req, res) => {
+const servedOrderOprions = [
+  check("served", "please specify if served").not().isEmpty(),
+]
+
+router.put("/:orderID", [auth, servedOrderOprions], async (req, res) => {
   try {
     // Check if Order Exists
     const order = await Order.findById(req.params.orderID)
@@ -35,6 +44,9 @@ router.get("/:orderID", auth, async (req, res) => {
       return res.status(401).json({ msg: "user not authorized" })
     }
 
+    // Update Order: Server or not?
+    order.served = req.body.served
+    await order.save()
     res.json(order)
 
     console.log("ordine ricercato")

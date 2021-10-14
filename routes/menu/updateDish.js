@@ -6,7 +6,7 @@ const router = express.Router()
 const { check, validationResult } = require("express-validator")
 
 // Middleware
-const auth = require("../../middleware/auth")
+const auth = require("../../utils/auth")
 
 // Database
 const Restaurant = require("../../models/Restaurant")

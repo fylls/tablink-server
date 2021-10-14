@@ -14,20 +14,11 @@ const URI = NODE_ENV === "test" ? MONGO_URI_TEST : MONGO_URI
 const DB_NAME = URI.substring(URI.lastIndexOf("/") + 1, URI.lastIndexOf("?"))
 
 // Opening the Connection
-const connectDB = async DB => {
-  await mongoose.connect(URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-}
+const connectDB = async DB => await mongoose.connect(URI)
 
 // Closing the Connection
 const shoutDownDB = async () => {
-  mongoose.connection.close(() =>
-    console.log(`closing connection with DATABASE: ${DB_NAME} `)
-  )
+  mongoose.connection.close(() => console.log(`closing connection with DATABASE: ${DB_NAME} `))
 }
 
 // Exporting
