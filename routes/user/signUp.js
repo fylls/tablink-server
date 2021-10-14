@@ -1,19 +1,19 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
-// Input Validator
+// input validator
 const { check, validationResult } = require("express-validator")
 
-// JWT Secret
+// JWT secret
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 
-// Database
+// database
 const User = require("../../models/User")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=============================    U   S   E   R   =============================*/
@@ -22,7 +22,7 @@ module.exports = router
  *
  * @route   POST api/user/signUp
  * @desc    Register User
- * @access  Public
+ * @access  public
  *
  * @body    name . email . phone . password
  *
@@ -38,24 +38,23 @@ const signUpOptions = [
 ]
 
 router.post("/signUp", signUpOptions, async (req, res) => {
-  // Check for Errors in Body (something is missing)
+  // check for errors in body
   const errors = validationResult(req.body)
-  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() })
+  if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
-  // Check if User Already Exists
+  // object destructuring from BODY
   const { name, email, phone, password } = req.body
 
   try {
     let user = await User.findOne({ email })
 
-    if (user) {
-      return res.status(400).json({ errors: [{ msg: "User already exists" }] })
-    }
+    // check if user already exists
+    if (user) return res.status(400).json("User already exists")
 
-    // Encrypt Password
+    // encrypt password
     const hashed = await bcrypt.hash(password, 12)
 
-    // Create new User
+    // create new user
     const newUser = new User({
       name,
       email,
@@ -63,17 +62,16 @@ router.post("/signUp", signUpOptions, async (req, res) => {
       password: hashed,
     })
 
-    // Save User to DB
+    // save user to DB
     await newUser.save()
 
-    // Get the Payload => userID
-    // without Mongoose  id: user._id
+    // get the payload (._id without mongoose)
     const payload = { user: { id: newUser.id } }
 
-    // Remove PSW
+    // remove PSW
     delete newUser.password
 
-    // Return JsonWebToken
+    // return token
     jwt.sign(
       payload,
 
@@ -87,7 +85,7 @@ router.post("/signUp", signUpOptions, async (req, res) => {
       }
     )
 
-    console.log("Utente Registrato")
+    console.log("user signed up")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server error")

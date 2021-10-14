@@ -1,14 +1,14 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Database
+// database
 const User = require("../../models/User")
 
-// Middleware for Auth
+// middleware
 const auth = require("../../utils/auth")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=============================    U   S   E   R   =============================*/
@@ -17,7 +17,7 @@ module.exports = router
  *
  * @route   GET api/user/me
  * @desc    get user info
- * @access  Private
+ * @access  private
  *
  * @header  x-auth-token
  *
@@ -27,7 +27,8 @@ router.get("/me", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password")
     if (user) res.json(user)
-    else return res.status(418).json({ msg: "invalid token" })
+    else return res.status(418).json("invalid token")
+    console.log("user data")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server Error")

@@ -1,19 +1,22 @@
-// This DB collection handles all data of all the restaurants associated with Tablink
-// User will get to see all restaurant info
-// Admins will have the right to modify their restaurant's data
+/*
 
+ This DB collection handles all data of the restaurants associated with Tablink
+ Only admins will have the right to modify their restaurant's data
+
+*/
+
+// dependencies
 const { Schema, model } = require("mongoose")
-
 const ObjectID = Schema.Types.ObjectId
 
-// Defualts
+// defaults
 const whiteIMG = "https://www.designersguild.com/image/1024/59518"
 const restIMG = "https://www.villageowl.com/images/restauranticon.png"
 
 const RestaurantSchema = new Schema(
   {
     //   REQUIRED FOR SIGNUP
-    //   restName   type   street   civ   cap   city   province   country layout
+    //   restName   type   street   civ   cap   city   province   country
 
     user: {
       type: ObjectID,
@@ -30,6 +33,7 @@ const RestaurantSchema = new Schema(
       require: true,
     },
 
+    // useful for restaurant with no photo
     layout: {
       type: String,
       enum: ["grid", "list"],

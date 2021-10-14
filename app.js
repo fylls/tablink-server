@@ -15,9 +15,6 @@ const deleteDishRoute = require("./routes/menu/deleteDish")
 const getDishRoute = require("./routes/menu/getDish")
 const updateDishRoute = require("./routes/menu/updateDish")
 
-
-
-
 // RESTAURANT routes
 const addRestRoute = require("./routes/restaurant/addRestaurant")
 const deleteRestRoute = require("./routes/restaurant/deleteRestaurant")
@@ -26,12 +23,12 @@ const getMyRestsRoute = require("./routes/restaurant/getMine")
 const getOneRestRoute = require("./routes/restaurant/getOne")
 const updateRestRoute = require("./routes/restaurant/updateRestaurant")
 
-
 // USER routes
-const logInRoute = require("./routes/user/logIn")
 const meRoute = require("./routes/user/me")
+const signInRoute = require("./routes/user/signIn")
 const signUpRoute = require("./routes/user/signUp")
 
+// API
 app.use("/api/restaurants", addDishRoute)
 app.use("/api/restaurants", deleteDishRoute)
 app.use("/api/restaurants", getDishRoute)
@@ -44,8 +41,8 @@ app.use("/api/restaurants", getMyRestsRoute)
 app.use("/api/restaurants", getOneRestRoute)
 app.use("/api/restaurants", updateRestRoute)
 
-app.use("/api/user", logInRoute)
 app.use("/api/user", meRoute)
+app.use("/api/user", signInRoute)
 app.use("/api/user", signUpRoute)
 
 // Home API Route

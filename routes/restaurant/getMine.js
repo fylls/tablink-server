@@ -1,15 +1,15 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Middleware
+// middleware
 const auth = require("../../utils/auth")
 
-// Database
+// database
 const User = require("../../models/User")
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=============================    R E S T A U R A N T    =============================*/
@@ -17,8 +17,8 @@ module.exports = router
 /**
  *
  * @route   GET api/restaurants/me
- * @desc    Get current users restaurant
- * @access  Private
+ * @desc    get current users restaurant
+ * @access  private
  *
  * @header  x-auth-token
  *
@@ -30,6 +30,7 @@ router.get("/me", auth, async (req, res) => {
 
     // get all the IDs of the restaurants associated with User
     // and Return to res an array with all the restaurants
+
     let restaurantsArray = []
 
     const restIDs = user.restaurants
@@ -43,10 +44,7 @@ router.get("/me", auth, async (req, res) => {
 
     await getRestaurants()
 
-    if (!restaurantsArray) {
-      res.status(400).json({ msg: "there is no restaurant for this user" })
-    }
-
+    if (!restaurantsArray) res.status(400).json("there is no restaurant for this user")
     res.json(restaurantsArray)
   } catch (err) {
     console.error(err.message)

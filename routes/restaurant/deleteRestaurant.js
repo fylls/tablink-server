@@ -1,18 +1,18 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Input Validator
+// input validator
 const { check, validationResult } = require("express-validator")
 
-// Middleware
+// middleware
 const auth = require("../../utils/auth")
 
-// Database
+// database
 const User = require("../../models/User")
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=============================    R E S T A U R A N T    =============================*/
@@ -20,8 +20,8 @@ module.exports = router
 /**
  *
  * @route   DELETE api/restaurants/:restID
- * @desc    Delete Restaurants by ID and Delete ID in user
- * @access  Private
+ * @desc    delete restaurants by ID and delete ID in user
+ * @access  private
  *
  * @header  x-auth-token
  * @params  :restID
@@ -30,35 +30,26 @@ module.exports = router
 
 router.delete("/:restID", auth, async (req, res) => {
   try {
-    // Check if Restaurant Exists
+    // check if restaurant exists
     const restaurant = await Restaurant.findById(req.params.restID)
-    if (!restaurant) {
-      return res.status(404).json({ msg: "restaurant not found" })
-    }
+    if (!restaurant) return res.status(404).json("restaurant not found")
 
-    // Check if the User Owning the Restaurant is the one Deleting it
-    // restaurant.user (ObjectId) , req.user.id (String)
-    if (restaurant.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "user not authorized" })
-    }
+    // check if the user owning the restaurant is the one deleting it
+    if (restaurant.user.toString() !== req.user.id) return res.status(401).json("user not authorized")
 
-    // Remove restId from user.restaurant in DB
+    // remove restId from user.restaurant in DB
     const restUser = await User.findById(req.user.id)
     const removeIndex = restUser.restaurants.indexOf(req.params.restID)
     restUser.restaurants.splice(removeIndex, 1)
 
-    // Removing
+    // remove restaurant
     await restaurant.remove()
     await restUser.save()
-
-    res.json({ msg: "restaurant Removed" })
+    res.json("restaurant removed")
+    console.log("restaurant removed")
   } catch (error) {
     console.error(error.message)
-
-    if (error.kind === "ObjectId") {
-      return res.status(500).json({ msg: "Restaurant not found" })
-    }
-
+    if (error.kind === "ObjectId") return res.status(500).json("restaurant not found")
     res.status(500).send("Server Error")
   }
 })

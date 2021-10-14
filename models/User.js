@@ -1,8 +1,14 @@
-// User DB collection handles sensible infos of all restaurant-admin associated with dablink brand
-// admins have the right to have one or more restaurants and to modify their data.
+/*
 
+ USER = ADMIN 
+
+ User DB collection handles sensible data of all restaurant-admin associated with Tablink
+ admins are the only one who can modify their restaurants' data.
+
+*/
+
+// dependencies
 const { Schema, model } = require("mongoose")
-
 const ObjectID = Schema.Types.ObjectId
 
 const UserSchema = new Schema(
@@ -10,11 +16,10 @@ const UserSchema = new Schema(
     // NECESSARY FOR SIGNUP
     // name email phone password
 
-    // identified by email
     email: {
       type: String,
       require: true,
-      unique: true,
+      unique: true, // identified by email
     },
 
     name: {
@@ -32,7 +37,7 @@ const UserSchema = new Schema(
       require: true,
     },
 
-    // array containing all restaurant associeted with user
+    // array containing all restaurant associated with user
     // not required at beginning, will be update ad every restaurant created by user
 
     restaurants: [
@@ -41,12 +46,6 @@ const UserSchema = new Schema(
         ref: "restaurants",
       },
     ],
-
-    // created by Stripe
-
-    CustomerId: {
-      type: String,
-    },
 
     date: {
       type: Date,

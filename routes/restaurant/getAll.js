@@ -1,11 +1,11 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Database
+// database
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 //                      BASE: /api/restaurants
@@ -15,8 +15,8 @@ module.exports = router
 /**
  *
  * @route   GET api/restaurants
- * @desc    Get all restaurants
- * @access  Public
+ * @desc    get all restaurants
+ * @access  public
  *
  */
 
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
   try {
     const restaurant = await Restaurant.find()
     res.json(restaurant)
-    console.log("Lista di tutti i ristoranti")
+    console.log("All Restaurant")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server Error")

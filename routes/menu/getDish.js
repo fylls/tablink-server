@@ -1,11 +1,11 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Database
+// database
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=====================      M  E  N  U      =====================*/
@@ -13,8 +13,8 @@ module.exports = router
 /**
  *
  * @route   GET api/restaurants/:restID/menu/:dishID (of item)
- * @desc    Get dish by menuID
- * @access  Public
+ * @desc    get dish by menuID
+ * @access  public
  *
  */
 
@@ -22,22 +22,17 @@ router.get("/:restID/menu/:dishID", async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.restID)
 
-    if (!restaurant) {
-      return res.status(400).json({ msg: "restaurant not found" })
-    }
+    if (!restaurant) return res.status(400).json("restaurant not found")
 
     // get index of dish-item
     const index = restaurant.menu
       .map(item => item.id)
       .indexOf(req.params.dishID)
 
-    if (restaurant.menu[index]) {
-      res.json(restaurant.menu[index])
-    } else {
-      return res.status(400).json({ msg: "dish not found" })
-    }
-
-    console.log("dish trovato")
+    if (restaurant.menu[index]) return res.json(restaurant.menu[index])
+    else return res.status(400).json("dish not found")
+    
+    console.log("Dish Retrieved")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server Error")

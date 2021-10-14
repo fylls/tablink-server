@@ -1,71 +1,63 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
-// Input Validator
+// input validator
 const { check, validationResult } = require("express-validator")
 
-// JWT Secret
+// JWT secret
 require("dotenv").config()
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 
-// Database
+// database
 const User = require("../../models/User")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=============================    U   S   E   R   =============================*/
 
 /**
  *
- * @route   POST api/user/logIn
- * @desc    Authenticate user & get token
- * @access  Public
+ * @route   POST api/user/signIn
+ * @desc    authenticate user & get token
+ * @access  public
  *
  * @body    email . password
  *
  */
 
-const logInOptions = [
+const signInOptions = [
   check("email", "Please include a valid email").exists(),
   check("password", "password is requiered").exists(),
 ]
 
-router.post("/logIn", logInOptions, async (req, res) => {
-  // Check for Errors in Body
+router.post("/signIn", signInOptions, async (req, res) => {
+  // check for errors in Body
   const errors = validationResult(req)
-  if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() })
+  if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
-  // Check if User Exists
-  // if not, for security reasons we will send "Invalid Credentials" in both cases
+  // object destructuring from BODY
   const { email, password } = req.body
 
   try {
     let user = await User.findOne({ email })
 
-    // Check if Email is Correct
-    // if there is no user => wrong email
-    if (!user) {
-      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] })
-    }
+    // check if user exists (user is identified by email)
+    if (!user) return res.status(400).json("Invalid Credentials")
 
-    // Check if Password is Correct
+    // check if password is correct
     // password         =>      given by user in req.body
-    // user.password    =>      hashed password fetch from DB
+    // user.password    =>      hashed password stored in DB
     const isMatch = await bcrypt.compare(password, user.password)
+    if (!isMatch) return res.status(400).json("Invalid Credentials")
 
-    if (!isMatch) {
-      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] })
-    }
-
-    // get the payload => userID
-    // without  mongoose  id: user._id
+    // get the payload (._id without mongoose)
     const payload = { user: { id: user.id } }
 
-    // return JsonWebToken
+    // return token
     jwt.sign(
       payload,
 
@@ -79,7 +71,7 @@ router.post("/logIn", logInOptions, async (req, res) => {
       }
     )
 
-    console.log("User Loggato")
+    console.log("user logged")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server error")

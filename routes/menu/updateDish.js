@@ -1,17 +1,17 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Input Validator
+// input validator
 const { check, validationResult } = require("express-validator")
 
-// Middleware
+// middleware
 const auth = require("../../utils/auth")
 
-// Database
+// database
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=====================      M  E  N  U      =====================*/
@@ -19,8 +19,8 @@ module.exports = router
 /**
  *
  * @route   PUT api/restaurants/:restID/menu/:menuID
- * @desc    Update dish by ID
- * @access  Private
+ * @desc    ppdate dish by ID
+ * @access  private
  *
  */
 
@@ -31,18 +31,11 @@ const menuItemOptions = [
   check("category", "category is required").not().isEmpty(),
 ]
 
-router.put(
-  "/:restID/menu/:dishID",
+router.put( "/:restID/menu/:dishID", [auth, menuItemOptions], async (req, res) => {
 
-  // Middlewares
-  [auth, menuItemOptions],
-
-  async (req, res) => {
     // check for error in body
     const errors = validationResult(req.body)
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() })
-    }
+    if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
     // object destructuring from BODY
     const {
@@ -69,22 +62,18 @@ router.put(
     if (description) newMenuItem.description = description
     if (recommendation) newMenuItem.recommendation = recommendation
 
+    // check if body is blank
     if (JSON.stringify(req.body) === JSON.stringify({})) {
-      return res.status(400).json({ msg: "empty JSON" })
+      return res.status(400).json("empty JSON")
     }
 
     try {
-      // Check if Restaurant Exists
+      // check if restaurant exists
       const restaurant = await Restaurant.findById(req.params.restID)
-      if (!restaurant) {
-        return res.status(400).json({ msg: "restaurant not found" })
-      }
+      if (!restaurant) return res.status(400).json("restaurant not found")
 
-      // Check if the User Owning the Restaurant is the one that Updates it
-      // restaurant.user (ObjectId) , req.user.id (String)
-      if (restaurant.user.toString() !== req.user.id) {
-        return res.status(401).json({ msg: "user not authorized" })
-      }
+    // check if the user owning the restaurant is the one that updates it
+      if (restaurant.user.toString() !== req.user.id) return res.status(401).json("user not authorized")
 
       // get index of menu-item
       const index = restaurant.menu
@@ -94,16 +83,15 @@ router.put(
       if (restaurant.menu[index]) {
         try {
           restaurant.menu[index] = newMenuItem
-
           await restaurant.save()
           res.json(restaurant)
-          console.log("menu aggiornato")
+          console.log("dish updated")
         } catch (err) {
           console.error(err.message)
           res.status(500).send("Server Error")
         }
       } else {
-        return res.status(400).json({ msg: "menu-item not found" })
+        return res.status(400).json("dish not found")
       }
     } catch (err) {
       console.error(err.message)

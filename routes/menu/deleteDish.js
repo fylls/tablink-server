@@ -1,14 +1,14 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Middleware
+// middleware
 const auth = require("../../utils/auth")
 
-// Database
+// database
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=====================      M  E  N  U      =====================*/
@@ -16,8 +16,8 @@ module.exports = router
 /**
  *
  * @route   api/restaurants/:restID/menu/:dishID
- * @desc    Delete dish from restaurant
- * @access  Private
+ * @desc    delete dish from restaurant
+ * @access  private
  *
  */
 
@@ -25,15 +25,10 @@ router.delete("/:restID/menu/:dishID", auth, async (req, res) => {
   try {
     // Check if Restaurant Exists
     const restaurant = await Restaurant.findById(req.params.restID)
-    if (!restaurant) {
-      return res.status(400).json({ msg: "restaurant not found" })
-    }
+    if (!restaurant) return res.status(400).json("restaurant not found")
 
-    // Check if the User Owning the Restaurant is the one that Updates it
-    // restaurant.user (ObjectId) , req.user.id (String)
-    if (restaurant.user.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "user not authorized" })
-    }
+    // check if the user owning the restaurant is the one that updates it
+    if (restaurant.user.toString() !== req.user.id) return res.status(401).json("user not authorized")
 
     // get remove index
     const removeIndex = restaurant.menu
@@ -43,11 +38,10 @@ router.delete("/:restID/menu/:dishID", auth, async (req, res) => {
     // remove element
     restaurant.menu.splice(removeIndex, 1)
 
-    // save to DB and send
+    // save to DB and send response
     await restaurant.save()
     res.json(restaurant)
-
-    console.log("elemento eliminato dal menu")
+    console.log("Dish Deleted")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server Error")

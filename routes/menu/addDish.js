@@ -1,17 +1,17 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Input Validator
+// input validator
 const { check, validationResult } = require("express-validator")
 
-// Middleware
+// middleware
 const auth = require("../../utils/auth")
 
-// Database
+// database
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=====================      M  E  N  U      =====================*/
@@ -19,8 +19,8 @@ module.exports = router
 /**
  *
  * @route   POST api/restaurants/:restID/menu
- * @desc    Add dish to restaurant
- * @access  Private
+ * @desc    add dish to restaurant
+ * @access  private
  *
  */
 
@@ -30,18 +30,11 @@ const menuOptions = [
   check("category", "category is required").not().isEmpty(),
 ]
 
-router.post(
-  "/:restID/menu",
-
-  // Middlewares
-  [auth, menuOptions],
-
-  async (req, res) => {
+router.post( "/:restID/menu", [auth, menuOptions], async (req, res) => {
+    
     // check for error in body
     const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() })
-    }
+    if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
     // object destructuring from BODY
     const {
@@ -57,13 +50,8 @@ router.post(
       percentage,
     } = req.body
 
-    // Build menu object
-    const newMenuItem = {
-      name,
-      price,
-      category,
-    }
-
+    // build menu object
+    const newMenuItem = { name, price, category }
     if (tags) newMenuItem.tags = tags
     if (image) newMenuItem.image = image
     if (available) newMenuItem.available = available
@@ -73,24 +61,20 @@ router.post(
     if (recommendation) newMenuItem.recommendation = recommendation
 
     try {
-      // Check if Restaurant Exists
+      // check if restaurant exists
       const restaurant = await Restaurant.findById(req.params.restID)
-      if (!restaurant) {
-        return res.status(404).json({ msg: "restaurant not found" })
-      }
+      if (!restaurant) return res.status(404).json("restaurant not found")
 
-      // Check if the User Owning the Restaurant is the one that Updates it
-      // restaurant.user (ObjectId) , req.user.id (String)
-      if (restaurant.user.toString() !== req.user.id) {
-        return res.status(401).json({ msg: "user not authorized" })
-      }
+      // check if the user owning the restaurant is the one that updates it
+      if (restaurant.user.toString() !== req.user.id) return res.status(401).json("user not authorized")
 
-      // Add Menu Item
+      // add menu item
       restaurant.menu.unshift(newMenuItem)
       await restaurant.save()
 
+      // response
       res.json(restaurant)
-      console.log("menu aggiornato")
+      console.log("Dish Added")
     } catch (err) {
       console.error(err.message)
       res.status(500).send("Server Error")

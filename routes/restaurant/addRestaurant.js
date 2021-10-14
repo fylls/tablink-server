@@ -1,18 +1,18 @@
-// Dependencies
+// dependencies
 const express = require("express")
 const router = express.Router()
 
-// Input Validator
+// input validator
 const { check, validationResult } = require("express-validator")
 
-// Middleware
+// middleware
 const auth = require("../../utils/auth")
 
-// Database
+// database
 const User = require("../../models/User")
 const Restaurant = require("../../models/Restaurant")
 
-// Exporting
+// exporting
 module.exports = router
 
 /*=============================    R E S T A U R A N T    =============================*/
@@ -20,8 +20,8 @@ module.exports = router
 /**
  *
  * @route   POST api/restaurants
- * @desc    Create restaurants for a user
- * @access  Private
+ * @desc    create restaurants for a user
+ * @access  private
  *
  * @header  REQUIRED:   x-auth-token
  * @body    REQUIRED:   restName   type   street   civ   cap   city   province   country
@@ -40,20 +40,13 @@ const restaurantOptions = [
   check("layout", "please specify layout").not().isEmpty(),
 ]
 
-router.post(
-  "/",
-
-  [auth, restaurantOptions], // Middlewares
-
-  async (req, res) => {
-    // Check for Errors in Body
+router.post("/", [auth, restaurantOptions], async (req, res) => {
+    // check for errors in body
     const errors = validationResult(req)
 
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() })
-    }
+    if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
-    // Object Destructuring from BODY
+    // object destructuring from BODY
     const {
       restName,
       type,
@@ -66,11 +59,8 @@ router.post(
       layout,
     } = req.body
 
-    // *
-
-    // Build restaurant object
+    // build restaurant object
     const restaurantFields = {}
-
     restaurantFields.user = req.user.id
     restaurantFields.restName = restName
     restaurantFields.type = type
@@ -81,7 +71,6 @@ router.post(
 
     // Build address object
     restaurantFields.address = {}
-
     restaurantFields.address.street = street
     restaurantFields.address.civ = civ
     restaurantFields.address.cap = cap
@@ -89,20 +78,22 @@ router.post(
     restaurantFields.address.province = province
     restaurantFields.address.country = country
 
-    // insert data
     try {
-      // Check if User Exists
+      // check if user exists
       const user = await User.findById(req.user.id).select("-password")
-      if (!user) return res.status(404).json({ msg: "wrong token" })
+      if (!user) return res.status(404).json("wrong token")
 
+      // create restaurant
       const newRest = new Restaurant(restaurantFields)
       await newRest.save()
 
+      // add restaurant under user
       user.restaurants.unshift(newRest._id)
       await user.save()
 
+      // response
       res.json(newRest)
-      console.log("creato nuovo ristorante per user")
+      console.log("new restaurant")
     } catch (err) {
       console.error(err.message)
       res.status(500).send("Server Error")
