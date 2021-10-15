@@ -1,6 +1,6 @@
 // dependencies
-const express = require("express")
-const cors = require("cors")
+import express from "express";
+import cors from "cors";
 
 // initialize application
 const app = express()
@@ -10,23 +10,23 @@ app.use(cors()) //                                                 accepting req
 app.use(express.json()) //                                         parsing "application/json"
 
 // MENU routes
-const addDishRoute = require("./routes/menu/addDish")
-const deleteDishRoute = require("./routes/menu/deleteDish")
-const getDishRoute = require("./routes/menu/getDish")
-const updateDishRoute = require("./routes/menu/updateDish")
+import addDishRoute from "./routes/menu/addDish"
+import deleteDishRoute from "./routes/menu/deleteDish"
+import getDishRoute from "./routes/menu/getDish"
+import updateDishRoute from "./routes/menu/updateDish"
 
 // RESTAURANT routes
-const addRestRoute = require("./routes/restaurant/addRestaurant")
-const deleteRestRoute = require("./routes/restaurant/deleteRestaurant")
-const getAllRestsRoute = require("./routes/restaurant/getAll")
-const getMyRestsRoute = require("./routes/restaurant/getMine")
-const getOneRestRoute = require("./routes/restaurant/getOne")
-const updateRestRoute = require("./routes/restaurant/updateRestaurant")
+import addRestRoute from "./routes/restaurant/addRestaurant"
+import deleteRestRoute from "./routes/restaurant/deleteRestaurant"
+import getAllRestsRoute from "./routes/restaurant/getAll"
+import getMyRestsRoute from "./routes/restaurant/getMine"
+import getOneRestRoute from "./routes/restaurant/getOne"
+import updateRestRoute from "./routes/restaurant/updateRestaurant"
 
 // USER routes
-const meRoute = require("./routes/user/me")
-const signInRoute = require("./routes/user/signIn")
-const signUpRoute = require("./routes/user/signUp")
+import meRoute from "./routes/user/me"
+import signInRoute from "./routes/user/signIn"
+import signUpRoute from "./routes/user/signUp"
 
 // API
 app.use("/api/restaurants", addDishRoute)
@@ -49,4 +49,4 @@ app.use("/api/user", signUpRoute)
 app.get("/api", (req, res) => res.sendFile(__dirname + "/public/index.html"))
 
 // Exporting just "app" for enabling testing
-module.exports = app
+export default app

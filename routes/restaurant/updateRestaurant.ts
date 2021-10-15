@@ -1,15 +1,15 @@
 // dependencies
-const express = require("express")
+import express from "express"
 const router = express.Router()
 
 // middleware
-const auth = require("../../utils/auth")
+import auth from "../../utils/auth"
 
 // database
-const Restaurant = require("../../models/Restaurant")
+import Restaurant from "../../models/Restaurant"
 
 // exporting
-module.exports = router
+export default router
 
 /*=============================    R E S T A U R A N T    =============================*/
 
@@ -30,30 +30,30 @@ router.put("/:restID", auth, async (req, res) => {
     if (!restaurant) return res.status(404).json("rest not found")
 
     // check if is the user owning the restaurant is the one modifying it
-    if (restaurant.user.toString() !== req.user.id) return res.status(401).json("user not authorized")
+    if (restaurant.user.toString() !== req.user) return res.status(401).json("user not authorized")
 
     // object Destructuring from BODY
     const {
-      restName,
-      type,
-      logo,
-      highlights,
-      restDescription,
-      layout,
+        restName,
+        type,
+        logo,
+        highlights,
+        restDescription,
+        layout,
 
-      street,
-      civ,
-      cap,
-      city,
-      province,
-      country,
+        street,
+        civ,
+        cap,
+        city,
+        province,
+        country,
 
-      website,
-      twitter,
-      facebook,
-      instagram,
+        website,
+        twitter,
+        facebook,
+        instagram,
 
-      menu, // (only for DB developers)
+        menu, // (only for DB developers)
     } = req.body
 
     // build restaurant object
@@ -87,18 +87,18 @@ router.put("/:restID", auth, async (req, res) => {
     if (menu) restaurantFields.menu = menu
 
     try {
-      // if there is a restaurant => update
-      const updatedRest = await Restaurant.findByIdAndUpdate(
-        req.params.restID,
-        { $set: restaurantFields },
-        { new: true }
-      )
+        // if there is a restaurant => update
+        const updatedRest = await Restaurant.findByIdAndUpdate(
+            req.params.restID,
+            { $set: restaurantFields },
+            { new: true }
+        )
 
-      res.json(updatedRest)
-      console.log("restaurant updated ")
+        res.json(updatedRest)
+        console.log("restaurant updated ")
     } catch (err) {
-      console.error(err.message)
-      res.status(500).send("Server Error")
+        console.error(err.message)
+        res.status(500).send("Server Error")
     }
-  }
+}
 )
