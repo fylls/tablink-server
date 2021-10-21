@@ -3,17 +3,17 @@
 // - err type
 
 // dependencies
-import { Response, Router } from 'express';
-import ExtendedRequest from '../../Interfaces/ExtendedRequest';
+import { Response, Router } from "express"
+import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // input validator
-import { check, validationResult } from 'express-validator'
+import { check, validationResult } from "express-validator"
 
 // middleware
-import auth from '../../utils/auth'
+import auth from "../../utils/auth"
 
 // database
-import Restaurant from '../../models/Restaurant'
+import Restaurant from "../../models/Restaurant"
 
 // exporting
 const router = Router()
@@ -30,29 +30,31 @@ export default router
  */
 
 const menuOptions = [
-    check('name', 'name is required').not().isEmpty(),
-    check('price', 'price is required').not().isEmpty(),
-    check('category', 'category is required').not().isEmpty(),
+  check("name", "name is required").not().isEmpty(),
+  check("price", "price is required").not().isEmpty(),
+  check("category", "category is required").not().isEmpty(),
 ]
 
-router.post('/:restID/menu', [auth, menuOptions], async (req: ExtendedRequest, res: Response) => {
-
+router.post(
+  "/:restID/menu",
+  [auth, menuOptions],
+  async (req: ExtendedRequest, res: Response) => {
     // check for error in body
     const errors = validationResult(req)
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
     // object destructuring from BODY
     const {
-        name,
-        price,
-        description,
-        category,
-        tags,
-        ingredients,
-        image,
-        available,
-        recommendation,
-        percentage,
+      name,
+      price,
+      description,
+      category,
+      tags,
+      ingredients,
+      image,
+      available,
+      recommendation,
+      percentage,
     } = req.body
 
     // build menu object
@@ -66,23 +68,24 @@ router.post('/:restID/menu', [auth, menuOptions], async (req: ExtendedRequest, r
     if (recommendation) newMenuItem.recommendation = recommendation
 
     try {
-        // check if restaurant exists
-        const restaurant = await Restaurant.findById(req.params.restID)
-        if (!restaurant) return res.status(404).json('restaurant not found')
+      // check if restaurant exists
+      const restaurant = await Restaurant.findById(req.params.restID)
+      if (!restaurant) return res.status(404).json("restaurant not found")
 
-        // check if the admin owning the restaurant is the one that updates it
-        if (restaurant.admin.toString() !== req.admin) return res.status(401).json('not authorized')
+      // check if the admin owning the restaurant is the one that updates it
+      if (restaurant.admin.toString() !== req.admin)
+        return res.status(401).json("not authorized")
 
-        // add menu item
-        restaurant.menu.unshift(newMenuItem)
-        await restaurant.save()
+      // add menu item
+      restaurant.menu.unshift(newMenuItem)
+      await restaurant.save()
 
-        // response
-        res.json(restaurant)
-        console.log('Dish Added')
+      // response
+      res.json(restaurant)
+      console.log("Dish Added")
     } catch (err) {
-        console.error(err.message)
-        res.status(500).send('Server Error')
+      console.error(err.message)
+      res.status(500).send("Server Error")
     }
-}
+  }
 )

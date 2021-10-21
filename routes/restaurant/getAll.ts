@@ -2,10 +2,10 @@
 // - err type
 
 // dependencies
-import { Request, Response, Router } from 'express';
+import { Request, Response, Router } from "express"
 
 // database
-import Restaurant from '../../models/Restaurant'
+import Restaurant from "../../models/Restaurant"
 
 // exporting
 const router = Router()
@@ -21,13 +21,13 @@ export default router
  *
  */
 
-router.get('/', async (req: Request, res: Response) => {
-    try {
-        const restaurant = await Restaurant.find()
-        res.json(restaurant)
-        console.log('All Restaurant')
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).send('Server Error')
-    }
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const restaurant = await Restaurant.find()
+    res.json(restaurant)
+    console.log("All Restaurant")
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send("Server Error")
+  }
 })

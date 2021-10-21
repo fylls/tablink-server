@@ -4,17 +4,17 @@
 // - item type
 
 // dependencies
-import { Response,  Router } from 'express';
-import ExtendedRequest from '../../Interfaces/ExtendedRequest';
+import { Response, Router } from "express"
+import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // input validator
-import { check, validationResult } from 'express-validator'
+import { check, validationResult } from "express-validator"
 
 // middleware
-import auth from '../../utils/auth'
+import auth from "../../utils/auth"
 
 // database
-import Restaurant from '../../models/Restaurant'
+import Restaurant from "../../models/Restaurant"
 
 // exporting
 const router = Router()
@@ -31,32 +31,33 @@ export default router
  */
 
 const menuItemOptions = [
-    check('name', 'name is required').not().isEmpty(),
-    check('price', 'price is required').not().isEmpty(),
-    check('description', 'description is required').not().isEmpty(),
-    check('category', 'category is required').not().isEmpty(),
+  check("name", "name is required").not().isEmpty(),
+  check("price", "price is required").not().isEmpty(),
+  check("description", "description is required").not().isEmpty(),
+  check("category", "category is required").not().isEmpty(),
 ]
 
-router.put('/:restID/menu/:dishID', [auth, menuItemOptions], async (req: ExtendedRequest, res: Response) => {
-
+router.put(
+  "/:restID/menu/:dishID",
+  [auth, menuItemOptions],
+  async (req: ExtendedRequest, res: Response) => {
     // check for error in body
     const errors = validationResult(req.body)
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
     // object destructuring from BODY
     const {
-        name,
-        price,
-        description,
-        category,
-        tags,
-        ingredients,
-        image,
-        available,
-        recommendation,
-        percentage,
+      name,
+      price,
+      description,
+      category,
+      tags,
+      ingredients,
+      image,
+      available,
+      recommendation,
+      percentage,
     } = req.body
-
 
     const newMenuItem: any = {}
     if (name) newMenuItem.name = name
@@ -72,38 +73,39 @@ router.put('/:restID/menu/:dishID', [auth, menuItemOptions], async (req: Extende
 
     // check if body is blank
     if (JSON.stringify(req.body) === JSON.stringify({})) {
-        return res.status(400).json('empty JSON')
+      return res.status(400).json("empty JSON")
     }
 
     try {
-        // check if restaurant exists
-        const restaurant = await Restaurant.findById(req.params.restID)
-        if (!restaurant) return res.status(400).json('restaurant not found')
+      // check if restaurant exists
+      const restaurant = await Restaurant.findById(req.params.restID)
+      if (!restaurant) return res.status(400).json("restaurant not found")
 
-        // check if the admin owning the restaurant is the one that updates it
-        if (restaurant.admin.toString() !== req.admin) return res.status(401).json('not authorized')
+      // check if the admin owning the restaurant is the one that updates it
+      if (restaurant.admin.toString() !== req.admin)
+        return res.status(401).json("not authorized")
 
-        // get index of menu-item
-        const index = restaurant.menu
-            .map(item => item.id)
-            .indexOf(req.params.dishID)
+      // get index of menu-item
+      const index = restaurant.menu
+        .map(item => item.id)
+        .indexOf(req.params.dishID)
 
-        if (restaurant.menu[index]) {
-            try {
-                restaurant.menu[index] = newMenuItem
-                await restaurant.save()
-                res.json(restaurant)
-                console.log('dish updated')
-            } catch (err) {
-                console.error(err.message)
-                res.status(500).send('Server Error')
-            }
-        } else {
-            return res.status(400).json('dish not found')
+      if (restaurant.menu[index]) {
+        try {
+          restaurant.menu[index] = newMenuItem
+          await restaurant.save()
+          res.json(restaurant)
+          console.log("dish updated")
+        } catch (err) {
+          console.error(err.message)
+          res.status(500).send("Server Error")
         }
+      } else {
+        return res.status(400).json("dish not found")
+      }
     } catch (err) {
-        console.error(err.message)
-        res.status(500).send('Server Error')
+      console.error(err.message)
+      res.status(500).send("Server Error")
     }
-}
+  }
 )

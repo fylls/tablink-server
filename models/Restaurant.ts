@@ -8,178 +8,178 @@
 // TODO da dove viene l id dei piatti? lo aggiunge mogo a caso? qua non e specificato
 
 // dependencies
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose"
 const ObjectID = Schema.Types.ObjectId
 
 // defaults
-const whiteIMG = 'https://www.designersguild.com/image/1024/59518'
-const restIMG = 'https://www.villageowl.com/images/restauranticon.png'
+const whiteIMG = "https://www.designersguild.com/image/1024/59518"
+const restIMG = "https://www.villageowl.com/images/restauranticon.png"
 
 const RestaurantSchema = new Schema(
-    {
-        //   REQUIRED FOR SIGNUP
-        //   restName   type   street   civ   cap   city   province   country
+  {
+    //   REQUIRED FOR SIGNUP
+    //   restName   type   street   civ   cap   city   province   country
 
-        admin: {
-            type: ObjectID,
-            ref: 'admins',
-        },
-
-        restName: {
-            type: String,
-            required: true,
-        },
-
-        type: {
-            type: String,
-            require: true,
-        },
-
-        // useful for restaurant with no photo
-        layout: {
-            type: String,
-            enum: ['grid', 'list'],
-            default: 'grid',
-        },
-
-        address: {
-            street: {
-                type: String,
-                require: true,
-            },
-
-            civ: {
-                type: String,
-                require: true,
-            },
-
-            cap: {
-                type: String,
-                require: true,
-            },
-
-            city: {
-                type: String,
-                require: true,
-            },
-
-            province: {
-                type: String,
-                require: true,
-            },
-
-            country: {
-                type: String,
-                require: true,
-            },
-        },
-
-        //   NOT REQUIRED => WILL BE ADDED ( at will ) BY ADMIN
-        //   logo   restDescription   highlights   website   twitter   facebook   instagram   menu
-
-        logo: {
-            type: String,
-            default: restIMG,
-        },
-
-        restDescription: {
-            type: String,
-        },
-
-        highlights: [
-            {
-                type: String,
-                default: whiteIMG,
-            },
-        ],
-
-        social: {
-            website: {
-                type: String,
-            },
-
-            twitter: {
-                type: String,
-            },
-
-            facebook: {
-                type: String,
-            },
-
-            instagram: {
-                type: String,
-            },
-        },
-
-        // menu by default is an empty array []
-
-        // name price category
-        // image description tags ingredients image recommendation percentage available
-
-        menu: [
-            {
-                name: {
-                    type: String,
-                    required: true,
-                },
-
-                image: {
-                    type: String,
-                    default: whiteIMG,
-                },
-
-                price: {
-                    type: String,
-                    required: true,
-                },
-
-                description: {
-                    type: String,
-                },
-
-                category: {
-                    type: String,
-                    required: true,
-                },
-
-                tags: {
-                    type: [String],
-                    default: [],
-                },
-
-                ingredients: {
-                    type: [String],
-                    default: [],
-                },
-
-                recommendation: {
-                    type: [String],
-                    default: [],
-                },
-
-                percentage: {
-                    type: String,
-                    default: '100%',
-                },
-
-                views: {
-                    type: Number,
-                    default: 0,
-                },
-
-                available: {
-                    type: Boolean,
-                    default: true,
-                },
-            },
-        ],
-
-        date: {
-            type: Date,
-            default: Date.now,
-        },
+    admin: {
+      type: ObjectID,
+      ref: "admins",
     },
-    { versionKey: false }
+
+    restName: {
+      type: String,
+      required: true,
+    },
+
+    type: {
+      type: String,
+      require: true,
+    },
+
+    // useful for restaurant with no photo
+    layout: {
+      type: String,
+      enum: ["grid", "list"],
+      default: "grid",
+    },
+
+    address: {
+      street: {
+        type: String,
+        require: true,
+      },
+
+      civ: {
+        type: String,
+        require: true,
+      },
+
+      cap: {
+        type: String,
+        require: true,
+      },
+
+      city: {
+        type: String,
+        require: true,
+      },
+
+      province: {
+        type: String,
+        require: true,
+      },
+
+      country: {
+        type: String,
+        require: true,
+      },
+    },
+
+    //   NOT REQUIRED => WILL BE ADDED ( at will ) BY ADMIN
+    //   logo   restDescription   highlights   website   twitter   facebook   instagram   menu
+
+    logo: {
+      type: String,
+      default: restIMG,
+    },
+
+    restDescription: {
+      type: String,
+    },
+
+    highlights: [
+      {
+        type: String,
+        default: whiteIMG,
+      },
+    ],
+
+    social: {
+      website: {
+        type: String,
+      },
+
+      twitter: {
+        type: String,
+      },
+
+      facebook: {
+        type: String,
+      },
+
+      instagram: {
+        type: String,
+      },
+    },
+
+    // menu by default is an empty array []
+
+    // name price category
+    // image description tags ingredients image recommendation percentage available
+
+    menu: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+
+        image: {
+          type: String,
+          default: whiteIMG,
+        },
+
+        price: {
+          type: String,
+          required: true,
+        },
+
+        description: {
+          type: String,
+        },
+
+        category: {
+          type: String,
+          required: true,
+        },
+
+        tags: {
+          type: [String],
+          default: [],
+        },
+
+        ingredients: {
+          type: [String],
+          default: [],
+        },
+
+        recommendation: {
+          type: [String],
+          default: [],
+        },
+
+        percentage: {
+          type: String,
+          default: "100%",
+        },
+
+        views: {
+          type: Number,
+          default: 0,
+        },
+
+        available: {
+          type: Boolean,
+          default: true,
+        },
+      },
+    ],
+
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  { versionKey: false }
 )
 
 /*
@@ -246,4 +246,4 @@ const RestaurantSchema = new Schema(
 
 */
 
-export default model('restaurants', RestaurantSchema)
+export default model("restaurants", RestaurantSchema)

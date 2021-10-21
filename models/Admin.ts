@@ -8,51 +8,51 @@
 */
 
 // dependencies
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose"
 const ObjectID = Schema.Types.ObjectId
 
 const AdminSchema = new Schema(
-    {
-        // NECESSARY FOR SIGNUP
-        // name email phone password
+  {
+    // NECESSARY FOR SIGNUP
+    // name email phone password
 
-        email: {
-            type: String,
-            require: true,
-            unique: true, // identified by email
-        },
-
-        name: {
-            type: String,
-            require: true,
-        },
-
-        phone: {
-            type: String,
-            require: true,
-        },
-
-        password: {
-            type: String,
-            require: true,
-        },
-
-        // array containing all restaurant associated with user
-        // not required at beginning, will be update ad every restaurant created by user
-
-        restaurants: [
-            {
-                type: ObjectID,
-                ref: 'restaurants',
-            },
-        ],
-
-        date: {
-            type: Date,
-            default: Date.now,
-        },
+    email: {
+      type: String,
+      require: true,
+      unique: true, // identified by email
     },
-    { versionKey: false }
+
+    name: {
+      type: String,
+      require: true,
+    },
+
+    phone: {
+      type: String,
+      require: true,
+    },
+
+    password: {
+      type: String,
+      require: true,
+    },
+
+    // array containing all restaurant associated with user
+    // not required at beginning, will be update ad every restaurant created by user
+
+    restaurants: [
+      {
+        type: ObjectID,
+        ref: "restaurants",
+      },
+    ],
+
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  { versionKey: false }
 )
 
 /*
@@ -68,4 +68,4 @@ const AdminSchema = new Schema(
 
 */
 
-export default model('admins', AdminSchema)
+export default model("admins", AdminSchema)

@@ -3,10 +3,10 @@
 // - err type
 
 // dependencies
-import { Request, Response, Router } from 'express';
+import { Request, Response, Router } from "express"
 
 // database
-import Restaurant from '../../models/Restaurant'
+import Restaurant from "../../models/Restaurant"
 
 // exporting
 const router = Router()
@@ -22,23 +22,23 @@ export default router
  *
  */
 
-router.get('/:restID/menu/:dishID', async (req: Request, res: Response) => {
-    try {
-        const restaurant = await Restaurant.findById(req.params.restID)
+router.get("/:restID/menu/:dishID", async (req: Request, res: Response) => {
+  try {
+    const restaurant = await Restaurant.findById(req.params.restID)
 
-        if (!restaurant) return res.status(400).json('restaurant not found')
+    if (!restaurant) return res.status(400).json("restaurant not found")
 
-        // get index of dish-item
-        const index = restaurant.menu
-            .map(item => item.id)
-            .indexOf(req.params.dishID)
+    // get index of dish-item
+    const index = restaurant.menu
+      .map(item => item.id)
+      .indexOf(req.params.dishID)
 
-        if (restaurant.menu[index]) return res.json(restaurant.menu[index])
-        else return res.status(400).json('dish not found')
+    if (restaurant.menu[index]) return res.json(restaurant.menu[index])
+    else return res.status(400).json("dish not found")
 
-        console.log('Dish Retrieved')
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).send('Server Error')
-    }
+    console.log("Dish Retrieved")
+  } catch (err) {
+    console.error(err.message)
+    res.status(500).send("Server Error")
+  }
 })
