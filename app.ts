@@ -25,10 +25,10 @@ import getMyRestsRoute from "./routes/restaurant/getMine"
 import getOneRestRoute from "./routes/restaurant/getOne"
 import updateRestRoute from "./routes/restaurant/updateRestaurant"
 
-// USER routes
-import meRoute from "./routes/user/me"
-import signInRoute from "./routes/user/signIn"
-import signUpRoute from "./routes/user/signUp"
+// ADMIN routes
+import meRoute from "./routes/admin/me"
+import signInRoute from "./routes/admin/signIn"
+import signUpRoute from "./routes/admin/signUp"
 
 // API
 app.use("/api/restaurants", addDishRoute)
@@ -43,9 +43,9 @@ app.use("/api/restaurants", getMyRestsRoute)
 app.use("/api/restaurants", getOneRestRoute)
 app.use("/api/restaurants", updateRestRoute)
 
-app.use("/api/user", meRoute)
-app.use("/api/user", signInRoute)
-app.use("/api/user", signUpRoute)
+app.use("/api/admin", meRoute)
+app.use("/api/admin", signInRoute)
+app.use("/api/admin", signUpRoute)
 
 // home API route
 app.get("/api", (req: Request, res: Response) =>

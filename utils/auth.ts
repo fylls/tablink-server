@@ -7,8 +7,8 @@ import ExtendedRequest from "../Interfaces/ExtendedRequest"
 import jwt from "jsonwebtoken"
 
 // environment
-require("dotenv").config()
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY ?? ""
+if (JWT_SECRET_KEY === "") console.log("no JWT secret")
 
 // middleware
 export default (req: ExtendedRequest, res: Response, next: NextFunction) => {
@@ -21,10 +21,10 @@ export default (req: ExtendedRequest, res: Response, next: NextFunction) => {
   // check if secret exists
   if (!JWT_SECRET_KEY) console.log("no JWT secret")
 
-  // verify Token: decode it with secret and assign it to user0
+  // verify Token: decode it with secret and assign it to admin
   try {
     const decoded = jwt.verify(token, JWT_SECRET_KEY)
-    req.admin = decoded.user
+    req.admin = decoded.admin
     console.log(decoded)
     next()
   } catch (err) {

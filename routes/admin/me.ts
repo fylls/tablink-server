@@ -16,8 +16,8 @@ export default router
 
 /**
  *
- * @route   GET api/user/me
- * @desc    get user info
+ * @route   GET api/admin/me
+ * @desc    get admin info
  * @access  private
  *
  * @header  x-auth-token

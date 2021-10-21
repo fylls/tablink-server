@@ -71,7 +71,7 @@ router.post("/signIn", signInOptions, async (req: Request, res: Response) => {
       }
     )
 
-    console.log("user logged")
+    console.log("admin logged")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server error")

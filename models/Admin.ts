@@ -2,7 +2,7 @@
 
  ADMIN 
 
- User DB collection handles sensible data of all restaurant-admin associated with Tablink
+ Admin DB collection handles sensible data of all restaurant-admin associated with Tablink
  admins are the only one who can modify their restaurants' data.
 
 */
@@ -37,8 +37,8 @@ const AdminSchema = new Schema(
       require: true,
     },
 
-    // array containing all restaurant associated with user
-    // not required at beginning, will be update ad every restaurant created by user
+    // array containing all restaurant associated with admin
+    // not required at beginning, will be update ad every restaurant created by admin
 
     restaurants: [
       {

@@ -21,8 +21,8 @@ export default router
 
 /**
  *
- * @route   POST api/user/signUp
- * @desc    Register User
+ * @route   POST api/admin/signUp
+ * @desc    Register admin
  * @access  public
  *
  * @body    name . email . phone . password
@@ -67,7 +67,7 @@ router.post("/signUp", signUpOptions, async (req: Request, res: Response) => {
     await newAdmin.save()
 
     // get the payload (._id without mongoose)
-    const payload = { user: newAdmin.id }
+    const payload = { admin: newAdmin.id }
 
     // remove PSW
     delete newAdmin.password
@@ -82,11 +82,11 @@ router.post("/signUp", signUpOptions, async (req: Request, res: Response) => {
 
       (err, token) => {
         if (err) throw err
-        res.json({ token, user: newAdmin })
+        res.json({ token, admin: newAdmin })
       }
     )
 
-    console.log("user signed up")
+    console.log("admin signed up")
   } catch (err) {
     console.error(err.message)
     res.status(500).send("Server error")
