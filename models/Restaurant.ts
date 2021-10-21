@@ -5,22 +5,24 @@
 
 */
 
+// TODO da dove viene l id dei piatti? lo aggiunge mogo a caso? qua non e specificato
+
 // dependencies
-import { Schema, model } from "mongoose"
+import { Schema, model } from 'mongoose'
 const ObjectID = Schema.Types.ObjectId
 
 // defaults
-const whiteIMG = "https://www.designersguild.com/image/1024/59518"
-const restIMG = "https://www.villageowl.com/images/restauranticon.png"
+const whiteIMG = 'https://www.designersguild.com/image/1024/59518'
+const restIMG = 'https://www.villageowl.com/images/restauranticon.png'
 
 const RestaurantSchema = new Schema(
     {
         //   REQUIRED FOR SIGNUP
         //   restName   type   street   civ   cap   city   province   country
 
-        user: {
+        admin: {
             type: ObjectID,
-            ref: "users",
+            ref: 'admins',
         },
 
         restName: {
@@ -36,8 +38,8 @@ const RestaurantSchema = new Schema(
         // useful for restaurant with no photo
         layout: {
             type: String,
-            enum: ["grid", "list"],
-            default: "grid",
+            enum: ['grid', 'list'],
+            default: 'grid',
         },
 
         address: {
@@ -72,7 +74,7 @@ const RestaurantSchema = new Schema(
             },
         },
 
-        //   NOT REQUIRED => WILL BE ADDED ( at will ) BY USER
+        //   NOT REQUIRED => WILL BE ADDED ( at will ) BY ADMIN
         //   logo   restDescription   highlights   website   twitter   facebook   instagram   menu
 
         logo: {
@@ -157,7 +159,7 @@ const RestaurantSchema = new Schema(
 
                 percentage: {
                     type: String,
-                    default: "100%",
+                    default: '100%',
                 },
 
                 views: {
@@ -188,38 +190,38 @@ const RestaurantSchema = new Schema(
 
   {
 
-    "restName" : "Ristortante Da Luigi",
+    'restName' : 'Ristortante Da Luigi',
     
-    "type": "ristorante",
+    'type': 'ristorante',
 
-    "street": "via monte",
-    "civ": "4",
-    "cap": "61033",
-    "city": "Fano",
-    "province": "PU",
-    "country": "Italy",
+    'street': 'via monte',
+    'civ': '4',
+    'cap': '61033',
+    'city': 'Fano',
+    'province': 'PU',
+    'country': 'Italy',
 
-    "restDescription": "un bar molto buono",
+    'restDescription': 'un bar molto buono',
 
-    "highlights": [
-      "https://www.designersguild.com/image/1024/59518",
-      "https://www.designersguild.com/image/1024/59518",
-      "https://www.designersguild.com/image/1024/59518"
+    'highlights': [
+      'https://www.designersguild.com/image/1024/59518',
+      'https://www.designersguild.com/image/1024/59518',
+      'https://www.designersguild.com/image/1024/59518'
     ],
 
-    "website": "www.com",
-    "twitter": "https://twitter.com",
-    "facebook": "https://facebook.com",
-    "instagram": "https://instagram.com",
+    'website': 'www.com',
+    'twitter': 'https://twitter.com',
+    'facebook': 'https://facebook.com',
+    'instagram': 'https://instagram.com',
 
-    "menu" : [{
-      "name": "albicocca fatta in casa",
-      "price": "19.99",
-      "description": "fruttta fresca",
-      "category": "fruits",
-      "tags": ["vegan"],
-      "ingredients": ["fruits"],
-      "image": "https://www.designersguild.com/image/1024/59518"
+    'menu' : [{
+      'name': 'albicocca fatta in casa',
+      'price': '19.99',
+      'description': 'fruttta fresca',
+      'category': 'fruits',
+      'tags': ['vegan'],
+      'ingredients': ['fruits'],
+      'image': 'https://www.designersguild.com/image/1024/59518'
     }]
   
   }
@@ -229,19 +231,19 @@ const RestaurantSchema = new Schema(
 
   {
 
-    "restName" : "Ristortante Da Luigi",
+    'restName' : 'Ristortante Da Luigi',
 
-    "type": "ristorante",
+    'type': 'ristorante',
 
-    "street": "via monte",
-    "civ": "4",
-    "cap": "61033",
-    "city": "Fano",
-    "province": "PU",
-    "country": "Italy",
+    'street': 'via monte',
+    'civ': '4',
+    'cap': '61033',
+    'city': 'Fano',
+    'province': 'PU',
+    'country': 'Italy',
 
   }
 
 */
 
-export default model("restaurants", RestaurantSchema)
+export default model('restaurants', RestaurantSchema)

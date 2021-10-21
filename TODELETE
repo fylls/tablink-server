@@ -1,0 +1,9 @@
+    "scripts": {
+        "OLDstart": "node server",
+        "OLDdev": "nodemon server",
+        "start": "node .",
+        "build": "babel --delete-dir-on-start --out-dir dist --copy-files --ignore \"**/__tests__ /**,**/__mocks__/**\" --no-copy-ignored src",
+        "start:dev": "nodemon dist/index.js",
+        "build:dev": "tsc --watch --preserveWatchOutput",
+        "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\""
+    },

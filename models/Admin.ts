@@ -1,6 +1,6 @@
 /*
 
- USER = ADMIN 
+ ADMIN 
 
  User DB collection handles sensible data of all restaurant-admin associated with Tablink
  admins are the only one who can modify their restaurants' data.
@@ -8,10 +8,10 @@
 */
 
 // dependencies
-import { Schema, model } from "mongoose"
+import { Schema, model } from 'mongoose'
 const ObjectID = Schema.Types.ObjectId
 
-const UserSchema = new Schema(
+const AdminSchema = new Schema(
     {
         // NECESSARY FOR SIGNUP
         // name email phone password
@@ -43,7 +43,7 @@ const UserSchema = new Schema(
         restaurants: [
             {
                 type: ObjectID,
-                ref: "restaurants",
+                ref: 'restaurants',
             },
         ],
 
@@ -60,12 +60,12 @@ const UserSchema = new Schema(
   E  X  A  M  P  L  E
 
   {
-    "name": "Mario Caprio",
-    "email": "dicaprio@gmail.com",
-    "phone": "3290346555",
-    "password": "123456"
+    'name': 'Mario Caprio',
+    'email': 'dicaprio@gmail.com',
+    'phone': '3290346555',
+    'password': '123456'
   }
 
 */
 
-export default model("users", UserSchema)
+export default model('admins', AdminSchema)

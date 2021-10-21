@@ -1,14 +1,15 @@
+//TODO
+// - err type
+
 // dependencies
-import express from "express"
-const router = express.Router()
+import { Request, Response, Router } from 'express';
 
 // database
-import Restaurant from "../../models/Restaurant"
+import Restaurant from '../../models/Restaurant'
 
 // exporting
+const router = Router()
 export default router
-
-//                      BASE: /api/restaurants
 
 /*=====================  R E S T A U R A N T  =====================*/
 
@@ -20,13 +21,13 @@ export default router
  *
  */
 
-router.get("/", async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
     try {
         const restaurant = await Restaurant.find()
         res.json(restaurant)
-        console.log("All Restaurant")
+        console.log('All Restaurant')
     } catch (err) {
         console.error(err.message)
-        res.status(500).send("Server Error")
+        res.status(500).send('Server Error')
     }
 })

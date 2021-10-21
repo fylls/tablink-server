@@ -1,14 +1,15 @@
 // dependencies
-import express from "express"
-const router = express.Router()
+import { Response, Router } from 'express';
+import ExtendedRequest from '../../Interfaces/ExtendedRequest';
 
 // database
-import User from "../../models/User"
+import Admin from '../../models/Admin'
 
 // middleware
-import auth from "../../utils/auth"
+import auth from '../../utils/auth'
 
 // exporting
+const router = Router()
 export default router
 
 /*=============================    U   S   E   R   =============================*/
@@ -23,14 +24,14 @@ export default router
  *
  */
 
-router.get("/me", auth, async (req, res) => {
+router.get('/me', auth, async (req: ExtendedRequest, res: Response) => {
     try {
-        const user = await User.findById(req.user).select("-password")
-        if (user) res.json(user)
-        else return res.status(418).json("invalid token")
-        console.log("user data")
+        const admin = await Admin.findById(req.admin).select('-password')
+        if (admin) res.json(admin)
+        else return res.status(418).json('invalid token')
+        console.log('admin data')
     } catch (err) {
         console.error(err.message)
-        res.status(500).send("Server Error")
+        res.status(500).send('Server Error')
     }
 })

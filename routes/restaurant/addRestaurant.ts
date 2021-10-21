@@ -1,18 +1,23 @@
+//TODO
+// - middleware type
+// - err type
+
 // dependencies
-import express from "express"
-const router = express.Router()
+import { Response, Router } from 'express';
+import ExtendedRequest from '../../Interfaces/ExtendedRequest';
 
 // input validator
-import { check, validationResult } from "express-validator"
+import { check, validationResult } from 'express-validator'
 
 // middleware
-import auth from "../../utils/auth"
+import auth from '../../utils/auth'
 
 // database
-import User from "../../models/User"
-import Restaurant from "../../models/Restaurant"
+import Admin from '../../models/Admin'
+import Restaurant from '../../models/Restaurant'
 
 // exporting
+const router = Router()
 export default router
 
 /*=============================    R E S T A U R A N T    =============================*/
@@ -20,7 +25,7 @@ export default router
 /**
  *
  * @route   POST api/restaurants
- * @desc    create restaurants for a user
+ * @desc    create restaurants for a admin
  * @access  private
  *
  * @header  REQUIRED:   x-auth-token
@@ -29,18 +34,18 @@ export default router
  */
 
 const restaurantOptions = [
-    check("restName", "please specify restName").not().isEmpty(),
-    check("type", "please specify type").not().isEmpty(),
-    check("street", "please specify street").not().isEmpty(),
-    check("civ", "please specify civ").not().isEmpty(),
-    check("cap", "please specify cap").not().isEmpty(),
-    check("city", "please specify city").not().isEmpty(),
-    check("province", "please specify province").not().isEmpty(),
-    check("country", "please specify country").not().isEmpty(),
-    check("layout", "please specify layout").not().isEmpty(),
+    check('restName', 'please specify restName').not().isEmpty(),
+    check('type', 'please specify type').not().isEmpty(),
+    check('street', 'please specify street').not().isEmpty(),
+    check('civ', 'please specify civ').not().isEmpty(),
+    check('cap', 'please specify cap').not().isEmpty(),
+    check('city', 'please specify city').not().isEmpty(),
+    check('province', 'please specify province').not().isEmpty(),
+    check('country', 'please specify country').not().isEmpty(),
+    check('layout', 'please specify layout').not().isEmpty(),
 ]
 
-router.post("/", [auth, restaurantOptions], async (req, res) => {
+router.post('/', [auth, restaurantOptions], async (req: ExtendedRequest, res: Response) => {
     // check for errors in body
     const errors = validationResult(req)
 
@@ -60,14 +65,14 @@ router.post("/", [auth, restaurantOptions], async (req, res) => {
     } = req.body
 
     // build restaurant object
-    const restaurantFields = {}
-    restaurantFields.user = req.user
+    const restaurantFields: any = {}
+    restaurantFields.admin = req.admin
     restaurantFields.restName = restName
     restaurantFields.type = type
 
     // layout
-    if (layout === ("grid" || "list")) restaurantFields.layout = layout
-    else return res.status(400).json("wrong layout")
+    if (layout === ('grid' || 'list')) restaurantFields.layout = layout
+    else return res.status(400).json('wrong layout')
 
     // Build address object
     restaurantFields.address = {}
@@ -79,24 +84,24 @@ router.post("/", [auth, restaurantOptions], async (req, res) => {
     restaurantFields.address.country = country
 
     try {
-        // check if user exists
-        const user = await User.findById(req.user).select("-password")
-        if (!user) return res.status(404).json("wrong token")
+        // check if admin exists
+        const admin = await Admin.findById(req.admin).select('-password')
+        if (!admin) return res.status(404).json('wrong token')
 
         // create restaurant
         const newRest = new Restaurant(restaurantFields)
         await newRest.save()
 
-        // add restaurant under user
-        user.restaurants.unshift(newRest._id)
-        await user.save()
+        // add restaurant under admin
+        admin.restaurants.unshift(newRest._id)
+        await admin.save()
 
         // response
         res.json(newRest)
-        console.log("new restaurant")
+        console.log('new restaurant')
     } catch (err) {
         console.error(err.message)
-        res.status(500).send("Server Error")
+        res.status(500).send('Server Error')
     }
 }
 )

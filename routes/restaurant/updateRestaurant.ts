@@ -1,14 +1,18 @@
+//TODO
+// err, middleware
+
 // dependencies
-import express from "express"
-const router = express.Router()
+import { Response, Router } from 'express';
+import ExtendedRequest from '../../Interfaces/ExtendedRequest';
 
 // middleware
-import auth from "../../utils/auth"
+import auth from '../../utils/auth'
 
 // database
-import Restaurant from "../../models/Restaurant"
+import Restaurant from '../../models/Restaurant'
 
 // exporting
+const router = Router()
 export default router
 
 /*=============================    R E S T A U R A N T    =============================*/
@@ -16,7 +20,7 @@ export default router
 /**
  *
  * @route   PUT api/restaurants/:restID
- * @desc    update restaurants for a user
+ * @desc    update restaurants for a admin
  * @access  private
  *
  * @header  REQUIRED:       x-auth-token
@@ -24,13 +28,13 @@ export default router
  *
  */
 
-router.put("/:restID", auth, async (req, res) => {
+router.put('/:restID', auth, async (req: ExtendedRequest, res: Response) => {
     // Check if Restaurant Exists
     let restaurant = await Restaurant.findById(req.params.restID)
-    if (!restaurant) return res.status(404).json("rest not found")
+    if (!restaurant) return res.status(404).json('rest not found')
 
-    // check if is the user owning the restaurant is the one modifying it
-    if (restaurant.user.toString() !== req.user) return res.status(401).json("user not authorized")
+    // check if is the admin owning the restaurant is the one modifying it
+    if (restaurant.admin.toString() !== req.admin) return res.status(401).json('not authorized')
 
     // object Destructuring from BODY
     const {
@@ -57,7 +61,7 @@ router.put("/:restID", auth, async (req, res) => {
     } = req.body
 
     // build restaurant object
-    const restaurantFields = {}
+    const restaurantFields: any = {}
     if (restName) restaurantFields.restName = restName
     if (type) restaurantFields.type = type
     if (logo) restaurantFields.logo = logo
@@ -65,7 +69,7 @@ router.put("/:restID", auth, async (req, res) => {
     if (restDescription) restaurantFields.restDescription = restDescription
 
     // layout
-    if (layout && layout === ("grid" || "list")) restaurantFields.layout = layout
+    if (layout && layout === ('grid' || 'list')) restaurantFields.layout = layout
 
     // build address object
     restaurantFields.address = {}
@@ -95,10 +99,10 @@ router.put("/:restID", auth, async (req, res) => {
         )
 
         res.json(updatedRest)
-        console.log("restaurant updated ")
+        console.log('restaurant updated ')
     } catch (err) {
         console.error(err.message)
-        res.status(500).send("Server Error")
+        res.status(500).send('Server Error')
     }
 }
 )

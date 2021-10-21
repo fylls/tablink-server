@@ -1,6 +1,6 @@
-import app from "./app"
-import { connectDB, DB_NAME } from "./utils/db.js"
-import { success, error } from "consola"
+import app from './app'
+import { connectDB, DB_NAME } from './utils/db.js'
+import consola from 'consola'
 
 const PORT = process.env.PORT ?? 3000
 
@@ -9,19 +9,19 @@ const startServer = async () => {
     try {
         await connectDB()
 
-        success({
+        consola.success({
             message: `successfully connected to DATABASE: ${DB_NAME}`,
             badge: true,
         })
 
         app.listen(PORT)
 
-        success({
+        consola.success({
             message: `Server started on PORT: ${PORT}`,
             badge: true,
         })
     } catch (err) {
-        error({
+        consola.error({
             message: `Unable to connect with Database \n${err}`,
             badge: true,
         })

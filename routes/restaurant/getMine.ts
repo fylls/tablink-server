@@ -1,15 +1,21 @@
+//TODO
+// define rest schema
+// function
+// err type
+
 // dependencies
-import express from "express"
-const router = express.Router()
+import { Response, Router } from 'express';
+import ExtendedRequest from '../../Interfaces/ExtendedRequest';
 
 // middleware
-import auth from "../../utils/auth"
+import auth from '../../utils/auth'
 
 // database
-import User from "../../models/User"
-import Restaurant from "../../models/Restaurant"
+import Admin from '../../models/Admin'
+import Restaurant from '../../models/Restaurant'
 
 // exporting
+const router = Router()
 export default router
 
 /*=============================    R E S T A U R A N T    =============================*/
@@ -17,23 +23,23 @@ export default router
 /**
  *
  * @route   GET api/restaurants/me
- * @desc    get current users restaurant
+ * @desc    get current admin's restaurant
  * @access  private
  *
  * @header  x-auth-token
  *
  */
 
-router.get("/me", auth, async (req, res) => {
+router.get('/me', auth, async (req: ExtendedRequest, res: Response) => {
     try {
-        const user = await User.findById(req.user).select("-password")
+        const admin = await Admin.findById(req.admin).select('-password')
 
-        // get all the IDs of the restaurants associated with User
+        // get all the IDs of the restaurants associated with Admin
         // and Return to res an array with all the restaurants
 
-        let restaurantsArray = []
+        let restaurantsArray:any = []
 
-        const restIDs = user.restaurants
+        const restIDs = admin.restaurants
 
         async function getRestaurants() {
             for (const restID of restIDs) {
@@ -44,10 +50,10 @@ router.get("/me", auth, async (req, res) => {
 
         await getRestaurants()
 
-        if (!restaurantsArray) res.status(400).json("there is no restaurant for this user")
+        if (!restaurantsArray) res.status(400).json('there is no restaurant for this admin')
         res.json(restaurantsArray)
     } catch (err) {
         console.error(err.message)
-        res.status(500).send("Server Error")
+        res.status(500).send('Server Error')
     }
 })

@@ -1,21 +1,20 @@
 // dependencies
-import express from "express"
-import bcrypt from "bcryptjs"
-import jwt from "jsonwebtoken"
-
-// router instance
-const router = express.Router()
+import { Request, Response, Router } from 'express';
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 // input validator
-import { check, validationResult } from "express-validator"
+import { check, validationResult } from 'express-validator'
 
 // JWT secret
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY ?? ''
+if (JWT_SECRET_KEY==='') console.log('no JWT secret')
 
 // database
-import User from "../../models/User"
+import Admin from '../../models/Admin'
 
 // exporting
+const router = Router()
 export default router
 
 /*=============================    U   S   E   R   =============================*/
@@ -31,15 +30,15 @@ export default router
  */
 
 const signUpOptions = [
-    check("name", "Name is required").not().isEmpty(),
-    check("phone", "Phone is required").not().isEmpty(),
-    check("email", "Please include a valid email").isEmail(),
-    check("password", "password must be longer than 6 characters ").isLength({
+    check('name', 'Name is required').not().isEmpty(),
+    check('phone', 'Phone is required').not().isEmpty(),
+    check('email', 'Please include a valid email').isEmail(),
+    check('password', 'password must be longer than 6 characters ').isLength({
         min: 6,
     }),
 ]
 
-router.post("/signUp", signUpOptions, async (req: any, res: any) => {
+router.post('/signUp', signUpOptions, async (req: Request, res: Response) => {
     // check for errors in body
     const errors = validationResult(req.body)
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
@@ -48,30 +47,30 @@ router.post("/signUp", signUpOptions, async (req: any, res: any) => {
     const { name, email, phone, password } = req.body
 
     try {
-        let user = await User.findOne({ email })
+        let admin = await Admin.findOne({ email })
 
-        // check if user already exists
-        if (user) return res.status(400).json("User already exists")
+        // check if admin already exists
+        if (admin) return res.status(400).json('Admin already exists')
 
         // encrypt password
         const hashed = await bcrypt.hash(password, 12)
 
-        // create new user
-        const newUser = new User({
+        // create new admin
+        const newAdmin = new Admin({
             name,
             email,
             phone,
             password: hashed,
         })
 
-        // save user to DB
-        await newUser.save()
+        // save admin to DB
+        await newAdmin.save()
 
         // get the payload (._id without mongoose)
-        const payload = { user: newUser.id }
+        const payload = { user: newAdmin.id }
 
         // remove PSW
-        delete newUser.password
+        delete newAdmin.password
 
         // return token
         jwt.sign(
@@ -83,13 +82,13 @@ router.post("/signUp", signUpOptions, async (req: any, res: any) => {
 
             (err, token) => {
                 if (err) throw err
-                res.json({ token, user: newUser })
+                res.json({ token, user: newAdmin })
             }
         )
 
-        console.log("user signed up")
+        console.log('user signed up')
     } catch (err) {
         console.error(err.message)
-        res.status(500).send("Server error")
+        res.status(500).send('Server error')
     }
 })

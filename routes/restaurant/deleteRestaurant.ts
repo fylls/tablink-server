@@ -1,18 +1,19 @@
-// dependencies
-import express from "express"
-const router = express.Router()
+// TODO
+// - err type
 
-// input validator
-import { check, validationResult } from "express-validator"
+// dependencies
+import { Response, Router } from 'express';
+import ExtendedRequest from '../../Interfaces/ExtendedRequest';
 
 // middleware
-import auth from "../../utils/auth"
+import auth from '../../utils/auth'
 
 // database
-import User from "../../models/User"
-import Restaurant from "../../models/Restaurant"
+import Admin from '../../models/Admin'
+import Restaurant from '../../models/Restaurant'
 
 // exporting
+const router = Router()
 export default router
 
 /*=============================    R E S T A U R A N T    =============================*/
@@ -20,7 +21,7 @@ export default router
 /**
  *
  * @route   DELETE api/restaurants/:restID
- * @desc    delete restaurants by ID and delete ID in user
+ * @desc    delete restaurants by ID and delete ID in admin
  * @access  private
  *
  * @header  x-auth-token
@@ -28,28 +29,28 @@ export default router
  *
  */
 
-router.delete("/:restID", auth, async (req, res) => {
+router.delete('/:restID', auth, async (req: ExtendedRequest, res: Response) => {
     try {
         // check if restaurant exists
         const restaurant = await Restaurant.findById(req.params.restID)
-        if (!restaurant) return res.status(404).json("restaurant not found")
+        if (!restaurant) return res.status(404).json('restaurant not found')
 
-        // check if the user owning the restaurant is the one deleting it
-        if (restaurant.user.toString() !== req.user) return res.status(401).json("user not authorized")
+        // check if the admin owning the restaurant is the one deleting it
+        if (restaurant.admin.toString() !== req.admin) return res.status(401).json('not authorized')
 
-        // remove restId from user.restaurant in DB
-        const restUser = await User.findById(req.user)
-        const removeIndex = restUser.restaurants.indexOf(req.params.restID)
-        restUser.restaurants.splice(removeIndex, 1)
+        // remove restId from admin.restaurants in DB
+        const restAdmin = await Admin.findById(req.admin)
+        const removeIndex = restAdmin.restaurants.indexOf(req.params.restID)
+        restAdmin.restaurants.splice(removeIndex, 1)
 
         // remove restaurant
         await restaurant.remove()
-        await restUser.save()
-        res.json("restaurant removed")
-        console.log("restaurant removed")
-    } catch (error) {
-        console.error(error.message)
-        if (error.kind === "ObjectId") return res.status(500).json("restaurant not found")
-        res.status(500).send("Server Error")
+        await restAdmin.save()
+        res.json('restaurant removed')
+        console.log('restaurant removed')
+    } catch (err) {
+        console.error(err.message)
+        if (err.kind === 'ObjectId') return res.status(500).json('restaurant not found')
+        res.status(500).send('Server Error')
     }
 })

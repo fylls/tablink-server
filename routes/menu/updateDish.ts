@@ -1,17 +1,23 @@
+//TODO
+// - middleware type
+// - err type
+// - item type
+
 // dependencies
-import express from "express"
-const router = express.Router()
+import { Response,  Router } from 'express';
+import ExtendedRequest from '../../Interfaces/ExtendedRequest';
 
 // input validator
-import { check, validationResult } from "express-validator"
+import { check, validationResult } from 'express-validator'
 
 // middleware
-import auth from "../../utils/auth"
+import auth from '../../utils/auth'
 
 // database
-import Restaurant from "../../models/Restaurant"
+import Restaurant from '../../models/Restaurant'
 
 // exporting
+const router = Router()
 export default router
 
 /*=====================      M  E  N  U      =====================*/
@@ -25,13 +31,13 @@ export default router
  */
 
 const menuItemOptions = [
-    check("name", "name is required").not().isEmpty(),
-    check("price", "price is required").not().isEmpty(),
-    check("description", "description is required").not().isEmpty(),
-    check("category", "category is required").not().isEmpty(),
+    check('name', 'name is required').not().isEmpty(),
+    check('price', 'price is required').not().isEmpty(),
+    check('description', 'description is required').not().isEmpty(),
+    check('category', 'category is required').not().isEmpty(),
 ]
 
-router.put("/:restID/menu/:dishID", [auth, menuItemOptions], async (req, res) => {
+router.put('/:restID/menu/:dishID', [auth, menuItemOptions], async (req: ExtendedRequest, res: Response) => {
 
     // check for error in body
     const errors = validationResult(req.body)
@@ -51,6 +57,8 @@ router.put("/:restID/menu/:dishID", [auth, menuItemOptions], async (req, res) =>
         percentage,
     } = req.body
 
+
+    const newMenuItem: any = {}
     if (name) newMenuItem.name = name
     if (tags) newMenuItem.tags = tags
     if (price) newMenuItem.price = price
@@ -64,16 +72,16 @@ router.put("/:restID/menu/:dishID", [auth, menuItemOptions], async (req, res) =>
 
     // check if body is blank
     if (JSON.stringify(req.body) === JSON.stringify({})) {
-        return res.status(400).json("empty JSON")
+        return res.status(400).json('empty JSON')
     }
 
     try {
         // check if restaurant exists
         const restaurant = await Restaurant.findById(req.params.restID)
-        if (!restaurant) return res.status(400).json("restaurant not found")
+        if (!restaurant) return res.status(400).json('restaurant not found')
 
-        // check if the user owning the restaurant is the one that updates it
-        if (restaurant.user.toString() !== req.user) return res.status(401).json("user not authorized")
+        // check if the admin owning the restaurant is the one that updates it
+        if (restaurant.admin.toString() !== req.admin) return res.status(401).json('not authorized')
 
         // get index of menu-item
         const index = restaurant.menu
@@ -85,17 +93,17 @@ router.put("/:restID/menu/:dishID", [auth, menuItemOptions], async (req, res) =>
                 restaurant.menu[index] = newMenuItem
                 await restaurant.save()
                 res.json(restaurant)
-                console.log("dish updated")
+                console.log('dish updated')
             } catch (err) {
                 console.error(err.message)
-                res.status(500).send("Server Error")
+                res.status(500).send('Server Error')
             }
         } else {
-            return res.status(400).json("dish not found")
+            return res.status(400).json('dish not found')
         }
     } catch (err) {
         console.error(err.message)
-        res.status(500).send("Server Error")
+        res.status(500).send('Server Error')
     }
 }
 )
