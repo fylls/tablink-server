@@ -1,5 +1,5 @@
 // dependencies
-import express, { Application, Request, Response } from "express"
+import express, { Application, Request, Response, json } from "express"
 import cors from "cors"
 
 //TODO implement cache and rate limiting
@@ -9,7 +9,7 @@ const app: Application = express()
 
 // initialize middlewares
 app.use(cors()) //                                                 accepting requests outside localhost
-app.use(express.json()) //                                         parsing 'application/json'
+app.use(json()) //                                                 parsing 'application/json'
 
 // MENU routes
 import addDishRoute from "./routes/menu/addDish"
@@ -48,9 +48,9 @@ app.use("/api/admin", signInRoute)
 app.use("/api/admin", signUpRoute)
 
 // home API route
-app.get("/api", (req: Request, res: Response) =>
+app.get("", (req: Request, res: Response) =>
   res.sendFile(__dirname + "/public/index.html")
 )
 
-// exporting just 'app' for enabling testing
+// exporting
 export default app

@@ -1,6 +1,3 @@
-//TODO
-// err type
-
 // dependencies
 import { Request, Response, Router } from "express"
 
@@ -28,7 +25,7 @@ router.get("/search/:restID", async (req: Request, res: Response) => {
     if (!restaurant) return res.status(400).json("restaurant not found")
     res.json(restaurant)
     console.log("Restaurant Found")
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message)
     if (err.kind === "ObjectId")
       return res.status(404).json("restaurant not found")

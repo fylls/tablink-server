@@ -20,9 +20,9 @@ const startServer = async () => {
       message: `Server started on PORT: ${PORT}`,
       badge: true,
     })
-  } catch (err) {
+  } catch (err: any) {
     consola.error({
-      message: `Unable to connect with Database \n${err}`,
+      message: `Unable to connect with Database \n ${err}`,
       badge: true,
     })
   }

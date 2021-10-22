@@ -1,7 +1,3 @@
-//TODO
-// - item type
-// - err type
-
 // dependencies
 import { Request, Response, Router } from "express"
 
@@ -30,14 +26,14 @@ router.get("/:restID/menu/:dishID", async (req: Request, res: Response) => {
 
     // get index of dish-item
     const index = restaurant.menu
-      .map(item => item.id)
+      .map((item: any) => item.id)
       .indexOf(req.params.dishID)
 
     if (restaurant.menu[index]) return res.json(restaurant.menu[index])
     else return res.status(400).json("dish not found")
 
     console.log("Dish Retrieved")
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message)
     res.status(500).send("Server Error")
   }

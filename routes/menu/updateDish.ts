@@ -1,14 +1,8 @@
-//TODO
-// - middleware type
-// - err type
-// - item type
-
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // input validator
-import { check, validationResult } from "express-validator"
+import { body, validationResult } from "express-validator"
 
 // middleware
 import auth from "../../utils/auth"
@@ -30,17 +24,16 @@ export default router
  *
  */
 
-const menuItemOptions = [
-  check("name", "name is required").not().isEmpty(),
-  check("price", "price is required").not().isEmpty(),
-  check("description", "description is required").not().isEmpty(),
-  check("category", "category is required").not().isEmpty(),
-]
-
 router.put(
   "/:restID/menu/:dishID",
-  [auth, menuItemOptions],
-  async (req: ExtendedRequest, res: Response) => {
+
+  auth,
+  body("name").exists(),
+  body("price").exists(),
+  body("category").exists(),
+  body("description").exists(),
+
+  async (req: any, res: Response) => {
     // check for error in body
     const errors = validationResult(req.body)
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
@@ -87,7 +80,7 @@ router.put(
 
       // get index of menu-item
       const index = restaurant.menu
-        .map(item => item.id)
+        .map((item: any) => item.id)
         .indexOf(req.params.dishID)
 
       if (restaurant.menu[index]) {
@@ -96,14 +89,14 @@ router.put(
           await restaurant.save()
           res.json(restaurant)
           console.log("dish updated")
-        } catch (err) {
+        } catch (err: any) {
           console.error(err.message)
           res.status(500).send("Server Error")
         }
       } else {
         return res.status(400).json("dish not found")
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message)
       res.status(500).send("Server Error")
     }

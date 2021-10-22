@@ -1,11 +1,6 @@
-//TODO
-// define rest schema
-// function
-// err type
-
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
+import { ObjectId } from "mongoose"
 
 // middleware
 import auth from "../../utils/auth"
@@ -30,30 +25,29 @@ export default router
  *
  */
 
-router.get("/me", auth, async (req: ExtendedRequest, res: Response) => {
+router.get("/me", auth, async (req: any, res: Response) => {
+  let restaurantsArray: any = []
+
+  // get all the IDs of the restaurants associated with Admin
+  // and Return to res an array with all the restaurants
+
+  async function getRestaurants(restIDs: Array<ObjectId>) {
+    for (const restID of restIDs) {
+      const rest = await Restaurant.findById(restID)
+      restaurantsArray.unshift(rest)
+    }
+  }
+
   try {
     const admin = await Admin.findById(req.admin).select("-password")
 
-    // get all the IDs of the restaurants associated with Admin
-    // and Return to res an array with all the restaurants
-
-    let restaurantsArray: any = []
-
     const restIDs = admin.restaurants
-
-    async function getRestaurants() {
-      for (const restID of restIDs) {
-        const rest = await Restaurant.findById(restID)
-        restaurantsArray.unshift(rest)
-      }
-    }
-
-    await getRestaurants()
+    await getRestaurants(restIDs)
 
     if (!restaurantsArray)
       res.status(400).json("there is no restaurant for this admin")
     res.json(restaurantsArray)
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message)
     res.status(500).send("Server Error")
   }

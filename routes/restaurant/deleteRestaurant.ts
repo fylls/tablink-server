@@ -3,7 +3,6 @@
 
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // middleware
 import auth from "../../utils/auth"
@@ -29,7 +28,7 @@ export default router
  *
  */
 
-router.delete("/:restID", auth, async (req: ExtendedRequest, res: Response) => {
+router.delete("/:restID", auth, async (req: any, res: Response) => {
   try {
     // check if restaurant exists
     const restaurant = await Restaurant.findById(req.params.restID)
@@ -49,7 +48,7 @@ router.delete("/:restID", auth, async (req: ExtendedRequest, res: Response) => {
     await restAdmin.save()
     res.json("restaurant removed")
     console.log("restaurant removed")
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message)
     if (err.kind === "ObjectId")
       return res.status(500).json("restaurant not found")

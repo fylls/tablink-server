@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 // input validator
-import { check, validationResult } from "express-validator"
+import { body, validationResult } from "express-validator"
 
 // JWT secret
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY ?? ""
@@ -29,66 +29,66 @@ export default router
  *
  */
 
-const signUpOptions = [
-  check("name", "Name is required").not().isEmpty(),
-  check("phone", "Phone is required").not().isEmpty(),
-  check("email", "Please include a valid email").isEmail(),
-  check("password", "password must be longer than 6 characters ").isLength({
-    min: 6,
-  }),
-]
+router.post(
+  "/signUp",
 
-router.post("/signUp", signUpOptions, async (req: Request, res: Response) => {
-  // check for errors in body
-  const errors = validationResult(req.body)
-  if (!errors.isEmpty()) return res.status(400).json(errors.array())
+  body("name").exists(),
+  body("phone").exists(),
+  body("email").isEmail(),
+  body("password").isLength({ min: 5 }),
 
-  // object destructuring from BODY
-  const { name, email, phone, password } = req.body
+  async (req: Request, res: Response) => {
+    // check for errors in body
+    const errors = validationResult(req.body)
+    if (!errors.isEmpty()) return res.status(400).json(errors.array())
 
-  try {
-    let admin = await Admin.findOne({ email })
+    // object destructuring from BODY
+    const { name, email, phone, password } = req.body
 
-    // check if admin already exists
-    if (admin) return res.status(400).json("Admin already exists")
+    try {
+      let admin = await Admin.findOne({ email })
 
-    // encrypt password
-    const hashed = await bcrypt.hash(password, 12)
+      // check if admin already exists
+      if (admin) return res.status(400).json("admin already exists")
 
-    // create new admin
-    const newAdmin = new Admin({
-      name,
-      email,
-      phone,
-      password: hashed,
-    })
+      // encrypt password
+      const hashed = await bcrypt.hash(password, 12)
 
-    // save admin to DB
-    await newAdmin.save()
+      // create new admin
+      const newAdmin = new Admin({
+        name,
+        phone,
+        email: email.toLowerCase(),
+        password: hashed,
+      })
 
-    // get the payload (._id without mongoose)
-    const payload = { admin: newAdmin.id }
+      // save admin to DB
+      await newAdmin.save()
 
-    // remove PSW
-    delete newAdmin.password
+      // get the payload (._id without mongoose)
+      const payload = { admin: newAdmin.id }
 
-    // return token
-    jwt.sign(
-      payload,
+      // remove PSW
+      delete newAdmin.password
 
-      JWT_SECRET_KEY,
+      // return token
+      jwt.sign(
+        payload,
 
-      { expiresIn: 36000 },
+        JWT_SECRET_KEY,
 
-      (err, token) => {
-        if (err) throw err
-        res.json({ token, admin: newAdmin })
-      }
-    )
+        { expiresIn: 36000 },
 
-    console.log("admin signed up")
-  } catch (err) {
-    console.error(err.message)
-    res.status(500).send("Server error")
+        (err, token) => {
+          if (err) throw err
+          res.json({ token, admin: newAdmin })
+        }
+      )
+
+      console.log("admin signed up")
+    } catch (err: any) {
+      console.error(err.message)
+      res.status(500).send("Server error")
+    }
   }
-})
+)

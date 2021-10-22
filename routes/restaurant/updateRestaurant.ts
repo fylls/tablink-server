@@ -1,9 +1,5 @@
-//TODO
-// err, middleware
-
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // middleware
 import auth from "../../utils/auth"
@@ -28,7 +24,7 @@ export default router
  *
  */
 
-router.put("/:restID", auth, async (req: ExtendedRequest, res: Response) => {
+router.put("/:restID", auth, async (req: any, res: Response) => {
   // Check if Restaurant Exists
   let restaurant = await Restaurant.findById(req.params.restID)
   if (!restaurant) return res.status(404).json("rest not found")
@@ -101,7 +97,7 @@ router.put("/:restID", auth, async (req: ExtendedRequest, res: Response) => {
 
     res.json(updatedRest)
     console.log("restaurant updated ")
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message)
     res.status(500).send("Server Error")
   }

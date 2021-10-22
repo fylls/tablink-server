@@ -1,13 +1,8 @@
-//TODO
-// - middleware type
-// - err type
-
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // input validator
-import { check, validationResult } from "express-validator"
+import { body, validationResult } from "express-validator"
 
 // middleware
 import auth from "../../utils/auth"
@@ -29,16 +24,15 @@ export default router
  *
  */
 
-const menuOptions = [
-  check("name", "name is required").not().isEmpty(),
-  check("price", "price is required").not().isEmpty(),
-  check("category", "category is required").not().isEmpty(),
-]
-
 router.post(
   "/:restID/menu",
-  [auth, menuOptions],
-  async (req: ExtendedRequest, res: Response) => {
+
+  auth,
+  body("name").exists(),
+  body("price").exists(),
+  body("category").exists(),
+
+  async (req: any, res: Response) => {
     // check for error in body
     const errors = validationResult(req)
     if (!errors.isEmpty()) return res.status(400).json(errors.array())
@@ -83,7 +77,7 @@ router.post(
       // response
       res.json(restaurant)
       console.log("Dish Added")
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message)
       res.status(500).send("Server Error")
     }

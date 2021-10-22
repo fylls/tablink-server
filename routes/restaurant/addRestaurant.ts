@@ -1,13 +1,8 @@
-//TODO
-// - middleware type
-// - err type
-
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // input validator
-import { check, validationResult } from "express-validator"
+import { body, validationResult } from "express-validator"
 
 // middleware
 import auth from "../../utils/auth"
@@ -33,22 +28,21 @@ export default router
  *
  */
 
-const restaurantOptions = [
-  check("restName", "please specify restName").not().isEmpty(),
-  check("type", "please specify type").not().isEmpty(),
-  check("street", "please specify street").not().isEmpty(),
-  check("civ", "please specify civ").not().isEmpty(),
-  check("cap", "please specify cap").not().isEmpty(),
-  check("city", "please specify city").not().isEmpty(),
-  check("province", "please specify province").not().isEmpty(),
-  check("country", "please specify country").not().isEmpty(),
-  check("layout", "please specify layout").not().isEmpty(),
-]
-
 router.post(
   "/",
-  [auth, restaurantOptions],
-  async (req: ExtendedRequest, res: Response) => {
+
+  auth,
+  body("restName").exists(),
+  body("type").exists(),
+  body("street").exists(),
+  body("civ").exists(),
+  body("cap").exists(),
+  body("city").exists(),
+  body("province").exists(),
+  body("country").exists(),
+  body("layout").exists(),
+
+  async (req: any, res: Response) => {
     // check for errors in body
     const errors = validationResult(req)
 
@@ -102,7 +96,7 @@ router.post(
       // response
       res.json(newRest)
       console.log("new restaurant")
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message)
       res.status(500).send("Server Error")
     }

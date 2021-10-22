@@ -8,8 +8,7 @@ const MONGO_URI = process.env.MONGO_URI ?? ""
 const MONGO_URI_TEST = process.env.MONGO_URI_TEST ?? ""
 
 // check if URIs are undefined
-if (MONGO_URI.length === 0 || MONGO_URI_TEST.length === 0)
-  console.log("URIs not defined")
+if (MONGO_URI === "" || MONGO_URI_TEST === "") console.log("URIs not defined")
 
 // connection variables
 const URI = NODE_ENV === "test" ? MONGO_URI_TEST : MONGO_URI

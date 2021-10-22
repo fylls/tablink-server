@@ -1,6 +1,5 @@
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // database
 import Admin from "../../models/Admin"
@@ -24,13 +23,13 @@ export default router
  *
  */
 
-router.get("/me", auth, async (req: ExtendedRequest, res: Response) => {
+router.get("/me", auth, async (req: any, res: Response) => {
   try {
     const admin = await Admin.findById(req.admin).select("-password")
     if (admin) res.json(admin)
     else return res.status(418).json("invalid token")
     console.log("admin data")
-  } catch (err) {
+  } catch (err: any) {
     console.error(err.message)
     res.status(500).send("Server Error")
   }

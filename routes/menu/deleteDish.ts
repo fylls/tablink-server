@@ -1,11 +1,5 @@
-//TODO
-// - item type
-// - err type
-// auth middleware
-
 // dependencies
 import { Response, Router } from "express"
-import ExtendedRequest from "../../Interfaces/ExtendedRequest"
 
 // middleware
 import auth from "../../utils/auth"
@@ -30,7 +24,7 @@ export default router
 router.delete(
   "/:restID/menu/:dishID",
   auth,
-  async (req: ExtendedRequest, res: Response) => {
+  async (req: any, res: Response) => {
     try {
       // Check if Restaurant Exists
       const restaurant = await Restaurant.findById(req.params.restID)
@@ -42,7 +36,7 @@ router.delete(
 
       // get remove index
       const removeIndex = restaurant.menu
-        .map(item => item.id)
+        .map((item: any) => item.id)
         .indexOf(req.params.dishID)
 
       // remove element
@@ -52,7 +46,7 @@ router.delete(
       await restaurant.save()
       res.json(restaurant)
       console.log("Dish Deleted")
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message)
       res.status(500).send("Server Error")
     }
